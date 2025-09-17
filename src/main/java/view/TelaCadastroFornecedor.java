@@ -19,27 +19,27 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
 
     //criando campo controller
     private final CadastroFornecedorController controller;
-    
+
     //criando campo helper
     private final CadastroFornecedorHelper helper;
-    
+
     public TelaCadastroFornecedor() {
         initComponents();
-        
+
         this.setResizable(false);
-        
+
         //controller esta passando view como parametro
         controller = new CadastroFornecedorController(this);
-        
+
         //helper esta passando view como parametro
-        helper = new CadastroFornecedorHelper(this);          
-        
+        helper = new CadastroFornecedorHelper(this);
+
         //inicia essa tela no centro
         this.setLocationRelativeTo(null);
-        
+
         //chama o metodo iniciar
-        this.iniciar();        
-        
+        this.iniciar();
+
     }
 
     /**
@@ -52,18 +52,18 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
     private void initComponents() {
 
         lblTitulo = new javax.swing.JLabel();
-        txtId = new javax.swing.JTextField();
+        txtId = new JTextField();
         lblFornecedorNome = new javax.swing.JLabel();
         lblID = new javax.swing.JLabel();
-        txtFornecedor = new javax.swing.JTextField();
-        btnPesquisar = new javax.swing.JButton();
-        btnSalvar = new javax.swing.JButton();
-        btnVoltar1 = new javax.swing.JButton();
-        btnExcluir = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
-        btnNovo = new javax.swing.JButton();
+        txtFornecedor = new JTextField();
+        btnPesquisar = new JButton();
+        btnSalvar = new JButton();
+        btnVoltar1 = new JButton();
+        btnExcluir = new JButton();
+        btnEditar = new JButton();
+        btnNovo = new JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTabelaFornecedor = new javax.swing.JTable();
+        jTabelaFornecedor = new JTable();
         jLblFundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -259,7 +259,7 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -351,42 +351,42 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
     public static void setTxtId(JTextField txtId) {
         TelaCadastroFornecedor.txtId = txtId;
     }
-    
+
     public void iniciar()
     {
-        
+
             //impede o usuario de mover as colunas para reoodena-las
             jTabelaFornecedor.getTableHeader().setReorderingAllowed(false);
-            
+
             //chama este metodo do controller
             controller.tabelaFornecedor();
-            
+
             jTabelaFornecedor.setRowSelectionAllowed(true);
-            
+
             //impessa o jtable de se auto redimensionar
             jTabelaFornecedor.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-            
+
             //as linhas abaixo define o tamanho das colunas da tabela
             //tabela pegue o modelo de coluna, pegue a coluna zero e sete a largura
             jTabelaFornecedor.getColumnModel().getColumn(0).setPreferredWidth(622);
-            jTabelaFornecedor.getColumnModel().getColumn(1).setPreferredWidth(622);            
-        
-    }     
-    
+            jTabelaFornecedor.getColumnModel().getColumn(1).setPreferredWidth(622);
+
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JButton btnEditar;
-    public static javax.swing.JButton btnExcluir;
-    public static javax.swing.JButton btnNovo;
-    public static javax.swing.JButton btnPesquisar;
-    public static javax.swing.JButton btnSalvar;
-    public static javax.swing.JButton btnVoltar1;
+    public static JButton btnEditar;
+    public static JButton btnExcluir;
+    public static JButton btnNovo;
+    public static JButton btnPesquisar;
+    public static JButton btnSalvar;
+    public static JButton btnVoltar1;
     private javax.swing.JLabel jLblFundo;
     private javax.swing.JScrollPane jScrollPane1;
-    public static javax.swing.JTable jTabelaFornecedor;
+    public static JTable jTabelaFornecedor;
     private javax.swing.JLabel lblFornecedorNome;
     private javax.swing.JLabel lblID;
     private javax.swing.JLabel lblTitulo;
-    public static javax.swing.JTextField txtFornecedor;
-    public static javax.swing.JTextField txtId;
+    public static JTextField txtFornecedor;
+    public static JTextField txtId;
     // End of variables declaration//GEN-END:variables
 }

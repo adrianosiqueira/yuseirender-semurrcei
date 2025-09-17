@@ -13,26 +13,26 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
 
     //criando campo controller
     private final CadastroNomeController controller;
-    
+
     //criando campo helper
-    private final CadastroNomeHelper helper;       
-    
+    private final CadastroNomeHelper helper;
+
     public TelaCadastroPessoa() {
         initComponents();
-        
+
         this.setResizable(false);
-        
+
         //controller esta passando view como parametro
         controller = new CadastroNomeController(this);
-        
+
         //helper esta passando view como parametro
-        helper = new CadastroNomeHelper(this);          
-        
+        helper = new CadastroNomeHelper(this);
+
         //inicia essa tela no centro
         this.setLocationRelativeTo(null);
-        
+
         //chama o metodo iniciar
-        this.iniciar();          
+        this.iniciar();
     }
 
     /**
@@ -45,18 +45,18 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
     private void initComponents() {
 
         lblTitulo = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTabelaCadNome = new javax.swing.JTable();
+        jScrollPane1 = new JScrollPane();
+        jTabelaCadNome = new JTable();
         lblID = new javax.swing.JLabel();
-        txtId = new javax.swing.JTextField();
+        txtId = new JTextField();
         lblNomepessoa = new javax.swing.JLabel();
-        txtNomepessoa = new javax.swing.JTextField();
-        btnNovo = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
-        btnPesquisar = new javax.swing.JButton();
-        btnVoltar = new javax.swing.JButton();
-        btnExcluir = new javax.swing.JButton();
-        btnSalvar = new javax.swing.JButton();
+        txtNomepessoa = new JTextField();
+        btnNovo = new JButton();
+        btnEditar = new JButton();
+        btnPesquisar = new JButton();
+        btnVoltar = new JButton();
+        btnExcluir = new JButton();
+        btnSalvar = new JButton();
         lblFundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -263,7 +263,7 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -372,42 +372,42 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
         TelaCadastroPessoa.txtNomepessoa = txtNomepessoa;
     }
 
-    
+
     public void iniciar()
     {
-        
+
             //impede o usuario de mover as colunas para reoodena-las
             jTabelaCadNome.getTableHeader().setReorderingAllowed(false);
-            
+
             //chama este metodo do controller
             controller.tabelaNomes();
-            
+
             jTabelaCadNome.setRowSelectionAllowed(true);
-            
+
             //impessa o jtable de se auto redimensionar
             jTabelaCadNome.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-            
+
             //as linhas abaixo define o tamanho das colunas da tabela
             //tabela pegue o modelo de coluna, pegue a coluna zero e sete a largura
             jTabelaCadNome.getColumnModel().getColumn(0).setPreferredWidth(622);
-            jTabelaCadNome.getColumnModel().getColumn(1).setPreferredWidth(622);          
-        
-    }        
-    
+            jTabelaCadNome.getColumnModel().getColumn(1).setPreferredWidth(622);
+
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JButton btnEditar;
-    public static javax.swing.JButton btnExcluir;
-    public static javax.swing.JButton btnNovo;
-    public static javax.swing.JButton btnPesquisar;
-    public static javax.swing.JButton btnSalvar;
-    public static javax.swing.JButton btnVoltar;
-    private javax.swing.JScrollPane jScrollPane1;
-    public static javax.swing.JTable jTabelaCadNome;
+    public static JButton btnEditar;
+    public static JButton btnExcluir;
+    public static JButton btnNovo;
+    public static JButton btnPesquisar;
+    public static JButton btnSalvar;
+    public static JButton btnVoltar;
+    private JScrollPane jScrollPane1;
+    public static JTable jTabelaCadNome;
     private javax.swing.JLabel lblFundo;
     private javax.swing.JLabel lblID;
     private javax.swing.JLabel lblNomepessoa;
     private javax.swing.JLabel lblTitulo;
-    public static javax.swing.JTextField txtId;
-    public static javax.swing.JTextField txtNomepessoa;
+    public static JTextField txtId;
+    public static JTextField txtNomepessoa;
     // End of variables declaration//GEN-END:variables
 }

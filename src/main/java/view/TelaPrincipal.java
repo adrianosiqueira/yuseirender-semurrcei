@@ -10,25 +10,25 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
 public class TelaPrincipal extends javax.swing.JFrame {
-    
+
     //criando campo helper
     private final TelaPrincipalHelper helper;
-    
+
     //criando campo controller
     private final CadastroLoginController controller;
-    
+
     public TelaPrincipal() throws SQLException {
-        initComponents();  
-        
+        initComponents();
+
         //inicie frame no meio
         this.setLocationRelativeTo(null);
-        
+
         //helper esta passando view como parametro
-        helper = new TelaPrincipalHelper(this);  
-        
+        helper = new TelaPrincipalHelper(this);
+
         //controller esta passando view como parametro
-        controller = new CadastroLoginController(this);    
-       
+        controller = new CadastroLoginController(this);
+
     }
 
     /**
@@ -42,17 +42,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         JBackground1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jConexao = new javax.swing.JMenu();
-        jMenuCadastro = new javax.swing.JMenu();
-        JMenuItemLogin = new javax.swing.JMenuItem();
-        jMenuItemEquipamento = new javax.swing.JMenuItem();
-        jMenuEmprestimo = new javax.swing.JMenuItem();
-        jMenuUnidade = new javax.swing.JMenuItem();
-        jMenuFabricante = new javax.swing.JMenuItem();
-        jMenuTipoEquipamento = new javax.swing.JMenuItem();
-        jMenuFornecedor = new javax.swing.JMenuItem();
-        jMenuNome = new javax.swing.JMenuItem();
-        jMenuSair = new javax.swing.JMenu();
+        jConexao = new JMenu();
+        jMenuCadastro = new JMenu();
+        JMenuItemLogin = new JMenuItem();
+        jMenuItemEquipamento = new JMenuItem();
+        jMenuEmprestimo = new JMenuItem();
+        jMenuUnidade = new JMenuItem();
+        jMenuFabricante = new JMenuItem();
+        jMenuTipoEquipamento = new JMenuItem();
+        jMenuFornecedor = new JMenuItem();
+        jMenuNome = new JMenuItem();
+        jMenuSair = new JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setUndecorated(true);
@@ -162,22 +162,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void JMenuItemLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemLoginActionPerformed
             this.dispose();
-        
+
             TelaCadastroLogin telacadastro = new TelaCadastroLogin();
-            telacadastro.setVisible(true);        
-        
+            telacadastro.setVisible(true);
+
     }//GEN-LAST:event_JMenuItemLoginActionPerformed
 
     private void jMenuItemEquipamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEquipamentoActionPerformed
             this.dispose();
-        
+
             TelaCadastroEquipamento telacadastroequip = new TelaCadastroEquipamento();
-            telacadastroequip.setVisible(true);  
+            telacadastroequip.setVisible(true);
     }//GEN-LAST:event_jMenuItemEquipamentoActionPerformed
 
     private void jMenuEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEmprestimoActionPerformed
             this.dispose();
-        
+
             TelaCadastroEmprestimo telacademprestimo = new TelaCadastroEmprestimo();
             telacademprestimo.setVisible(true);
     }//GEN-LAST:event_jMenuEmprestimoActionPerformed
@@ -189,41 +189,41 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jMenuUnidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuUnidadeActionPerformed
         this.dispose();
-        
+
         TelaCadastroUnidade telacadunidade = new TelaCadastroUnidade();
         telacadunidade.setVisible(true);
     }//GEN-LAST:event_jMenuUnidadeActionPerformed
 
     private void jMenuFabricanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuFabricanteActionPerformed
-        //Chama tela cadastro fabricante 
+        //Chama tela cadastro fabricante
         this.dispose();
-        
+
         TelaCadastroFabricante telacadfabri = new TelaCadastroFabricante();
-        telacadfabri.setVisible(true);  
+        telacadfabri.setVisible(true);
     }//GEN-LAST:event_jMenuFabricanteActionPerformed
 
     private void jMenuTipoEquipamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuTipoEquipamentoActionPerformed
-        //Chama tela cadastro tipoequipamento 
+        //Chama tela cadastro tipoequipamento
         this.dispose();
-        
+
         TelaCadastroTipoEquipamento telacadtipoequip = new TelaCadastroTipoEquipamento();
-        telacadtipoequip.setVisible(true);  
+        telacadtipoequip.setVisible(true);
     }//GEN-LAST:event_jMenuTipoEquipamentoActionPerformed
 
     private void jMenuFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuFornecedorActionPerformed
-        //Chama tela cadastro fornecedor 
+        //Chama tela cadastro fornecedor
         this.dispose();
-        
+
         TelaCadastroFornecedor telacadfornecedor = new TelaCadastroFornecedor();
-        telacadfornecedor.setVisible(true);  
+        telacadfornecedor.setVisible(true);
     }//GEN-LAST:event_jMenuFornecedorActionPerformed
 
     private void jMenuNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuNomeActionPerformed
         //Chama tela TelaCadastroPessoa
         this.dispose();
-        
+
         TelaCadastroPessoa telacadNome = new TelaCadastroPessoa();
-        telacadNome.setVisible(true);  
+        telacadNome.setVisible(true);
     }//GEN-LAST:event_jMenuNomeActionPerformed
 
     /**
@@ -233,7 +233,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -243,13 +243,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -266,7 +266,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     //getter e setter elemento view
-    
+
     public JMenu getjConexao() {
         return jConexao;
     }
@@ -281,21 +281,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     public void setjMenuItemEquipamento(JMenuItem jMenuItemEquipamento) {
         this.jMenuItemEquipamento = jMenuItemEquipamento;
-    }       
-    
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JLabel JBackground1;
-    public static javax.swing.JMenuItem JMenuItemLogin;
-    public static javax.swing.JMenu jConexao;
+    public static JMenuItem JMenuItemLogin;
+    public static JMenu jConexao;
     private javax.swing.JMenuBar jMenuBar1;
-    public static javax.swing.JMenu jMenuCadastro;
-    public static javax.swing.JMenuItem jMenuEmprestimo;
-    public static javax.swing.JMenuItem jMenuFabricante;
-    public static javax.swing.JMenuItem jMenuFornecedor;
-    public static javax.swing.JMenuItem jMenuItemEquipamento;
-    private javax.swing.JMenuItem jMenuNome;
-    public static javax.swing.JMenu jMenuSair;
-    public static javax.swing.JMenuItem jMenuTipoEquipamento;
-    public static javax.swing.JMenuItem jMenuUnidade;
+    public static JMenu jMenuCadastro;
+    public static JMenuItem jMenuEmprestimo;
+    public static JMenuItem jMenuFabricante;
+    public static JMenuItem jMenuFornecedor;
+    public static JMenuItem jMenuItemEquipamento;
+    private JMenuItem jMenuNome;
+    public static JMenu jMenuSair;
+    public static JMenuItem jMenuTipoEquipamento;
+    public static JMenuItem jMenuUnidade;
     // End of variables declaration//GEN-END:variables
 }

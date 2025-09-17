@@ -22,73 +22,73 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
 
     //criando campo controller
     private final CadastroEquipamentoController controller;
-    
+
     //criando campo helper
-    private final CadastroEquipamentoHelper helper;    
-    
+    private final CadastroEquipamentoHelper helper;
+
     public TelaCadastroEquipamento() {
         initComponents();
-        
+
         this.setResizable(false);
-        
+
         //controller esta passando view como parametro
         controller = new CadastroEquipamentoController(this);
-        
+
         //helper esta passando view como parametro
-        helper = new CadastroEquipamentoHelper(this);          
-        
+        helper = new CadastroEquipamentoHelper(this);
+
         //inicia essa tela no centro
         this.setLocationRelativeTo(null);
-        
+
         //chama o metodo iniciar
-        this.iniciar();        
+        this.iniciar();
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButtonUnidade = new javax.swing.JButton();
+        jButtonUnidade = new JButton();
         lblColuna = new javax.swing.JLabel();
-        txtColuna = new javax.swing.JComboBox();
-        txtUnidade = new javax.swing.JComboBox();
-        txtEquipamento = new javax.swing.JComboBox<>();
-        txtStatus = new javax.swing.JComboBox<>();
+        txtColuna = new JComboBox();
+        txtUnidade = new JComboBox();
+        txtEquipamento = new JComboBox<>();
+        txtStatus = new JComboBox<>();
         lblUnidade = new javax.swing.JLabel();
         lblTipoEquip = new javax.swing.JLabel();
         lblTitulo = new javax.swing.JLabel();
         lblID = new javax.swing.JLabel();
-        txtId = new javax.swing.JTextField();
-        jButtonTipoEquip = new javax.swing.JButton();
-        txtTipoEquip = new javax.swing.JComboBox();
+        txtId = new JTextField();
+        jButtonTipoEquip = new JButton();
+        txtTipoEquip = new JComboBox();
         lblTipo = new javax.swing.JLabel();
-        txtTombo = new javax.swing.JTextField();
+        txtTombo = new JTextField();
         lblSerie = new javax.swing.JLabel();
-        txtSerie = new javax.swing.JTextField();
+        txtSerie = new JTextField();
         lblCtrldeterc = new javax.swing.JLabel();
         lblFabMod = new javax.swing.JLabel();
-        txtModelo = new javax.swing.JTextField();
-        txtFornecedor = new javax.swing.JComboBox();
-        JButtonFabricante = new javax.swing.JButton();
-        txtFabricante = new javax.swing.JComboBox<>();
+        txtModelo = new JTextField();
+        txtFornecedor = new JComboBox();
+        JButtonFabricante = new JButton();
+        txtFabricante = new JComboBox<>();
         lblCampo = new javax.swing.JLabel();
-        txtCampo = new javax.swing.JComboBox();
+        txtCampo = new JComboBox();
         lblStatus = new javax.swing.JLabel();
         lblEmpresa = new javax.swing.JLabel();
         lblEmpresa1 = new javax.swing.JLabel();
         lblModelo1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        txtObservacao = new javax.swing.JTextArea();
-        JButtonFornecedor = new javax.swing.JButton();
-        btnPesquisar = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
-        btnNovo = new javax.swing.JButton();
-        btnSalvar = new javax.swing.JButton();
-        btnVoltar1 = new javax.swing.JButton();
-        btnPDF = new javax.swing.JButton();
-        btnExcluir = new javax.swing.JButton();
+        txtObservacao = new JTextArea();
+        JButtonFornecedor = new JButton();
+        btnPesquisar = new JButton();
+        btnEditar = new JButton();
+        btnNovo = new JButton();
+        btnSalvar = new JButton();
+        btnVoltar1 = new JButton();
+        btnPDF = new JButton();
+        btnExcluir = new JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTabelaCadEquip = new javax.swing.JTable();
+        jTabelaCadEquip = new JTable();
         lblfundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -410,116 +410,116 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
         {
             //Captura valor string selecionado do combbobox
             String unidadenome = txtCampo.getSelectedItem().toString();
-            
+
             //chama este metodo do controller
             controller.selecionarAllEquipPorUnidade(unidadenome);
-            
+
             txtCampo.removeAllItems();
-            
+
         }
         else if(txtColuna.getSelectedItem().equals("TIPOEQUIP"))
         {
-            
+
             //Captura valor string selecionado do combbobox
             String tipoequipamentonome = txtCampo.getSelectedItem().toString();
-            
+
             //chama este metodo do controller
             controller.selecionarAllEquipPorTipoEquipamento(tipoequipamentonome);
-            
-            txtCampo.removeAllItems();            
-            
-        } 
+
+            txtCampo.removeAllItems();
+
+        }
         else if(txtColuna.getSelectedItem().equals("FORNECEDOR"))
         {
-            
+
             //Captura valor string selecionado do combbobox
             String fornecedor = txtCampo.getSelectedItem().toString();
-            
+
             //chama este metodo do controller
             controller.selecionarAllEquipPorFornecedor(fornecedor);
-            
-            txtCampo.removeAllItems();            
-            
-        }            
+
+            txtCampo.removeAllItems();
+
+        }
         else if(txtColuna.getSelectedItem().equals("STATUS"))
         {
-            
+
             //Captura valor string selecionado do combbobox
             String status = txtCampo.getSelectedItem().toString();
-            
+
             //chama este metodo do controller
             controller.selecionarAllEquipPorStatus(status);
-            
-            txtCampo.removeAllItems();            
-            
-        }   
+
+            txtCampo.removeAllItems();
+
+        }
         else if(txtColuna.getSelectedItem().equals("EQUIPAMENTO"))
         {
-            
+
             String alugado = "ALUGADO";
             String patrimonio = "PATRIMONIO";
             String convenio = "CONVENIO";
-            
+
             //adciona os itens para o combobox campo
             txtCampo.addItem(alugado);
             txtCampo.addItem(patrimonio);
             txtCampo.addItem(convenio);
-            
+
             if(txtCampo.getSelectedItem().equals("ALUGADO"))
             {
-                
+
                 //Captura valor string selecionado do combbobox
                 alugado = txtCampo.getSelectedItem().toString();
-                
+
                 //chama este metodo do controller
-                controller.selecionarAllEquipPorAlugado(alugado);  
-                
+                controller.selecionarAllEquipPorAlugado(alugado);
+
                 txtCampo.removeAllItems();
 
             }
             else if(txtCampo.getSelectedItem().equals("PATRIMONIO"))
             {
-                
+
                 //Captura valor string selecionado do combbobox
-                patrimonio = txtCampo.getSelectedItem().toString();    
-                
+                patrimonio = txtCampo.getSelectedItem().toString();
+
                 //chama este metodo do controller
                 controller.selecionarAllEquipPorPatrimonio(patrimonio);
-                
-                txtCampo.removeAllItems();                
-                
+
+                txtCampo.removeAllItems();
+
             }
             else if(txtCampo.getSelectedItem().equals("CONVENIO"))
             {
-                
+
                 //Captura valor string selecionado do combbobox
-                convenio = txtCampo.getSelectedItem().toString();   
-                
+                convenio = txtCampo.getSelectedItem().toString();
+
                 //chame este metodo do controller
                 controller.selecionarAllEquipPorConvenio(convenio);
-                
-                txtCampo.removeAllItems();                
-                
-            }    
-            
-        }   
+
+                txtCampo.removeAllItems();
+
+            }
+
+        }
         else if(txtColuna.getSelectedItem().equals("GERAL"))
         {
-            
+
             //chama este metodo do controller
             controller.selecionarAllEquipamentos();
-            
-        }         
-        
+
+        }
+
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
 
         //controller chama metodo update equipamento
         controller.updateEquipamento();
-        
+
         iniciar();
-        
+
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
@@ -531,8 +531,8 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
 
         //controller chama metodo salvar Equipamento
-        controller.salvarEquipamento();    
-        
+        controller.salvarEquipamento();
+
         iniciar();
 
     }//GEN-LAST:event_btnSalvarActionPerformed
@@ -541,22 +541,22 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
         //tente chamar a tela principal
         try
         {
-            
 
-            this.dispose();        
-            
+
+            this.dispose();
+
             TelaPrincipal telaprincip = new TelaPrincipal();
             telaprincip.setVisible(true);
-            
+
         }
         //se não conseguir pegue a excesão e mostre a mensagem na tela junto com a excesão
         catch(Exception ex)
         {
-            
+
             JOptionPane.showMessageDialog(null, "Error ao chamar a tela principal!" + ex);
-            
-        }  
-        
+
+        }
+
     }//GEN-LAST:event_btnVoltar1ActionPerformed
 
     private void jTabelaCadEquipMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabelaCadEquipMouseClicked
@@ -572,27 +572,27 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void jButtonUnidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUnidadeActionPerformed
-        //Chama tela cadastro unidade 
+        //Chama tela cadastro unidade
         this.dispose();
-        
+
         TelaCadastroUnidade telacadunidade = new TelaCadastroUnidade();
-        telacadunidade.setVisible(true);  
+        telacadunidade.setVisible(true);
     }//GEN-LAST:event_jButtonUnidadeActionPerformed
 
     private void JButtonFabricanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonFabricanteActionPerformed
-        //Chama tela cadastro fabricante 
+        //Chama tela cadastro fabricante
         this.dispose();
-        
+
         TelaCadastroFabricante telacadfabricante = new TelaCadastroFabricante();
-        telacadfabricante.setVisible(true);  
+        telacadfabricante.setVisible(true);
     }//GEN-LAST:event_JButtonFabricanteActionPerformed
 
     private void jButtonTipoEquipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTipoEquipActionPerformed
-        //Chama tela cadastro tipoequipamento 
+        //Chama tela cadastro tipoequipamento
         this.dispose();
-        
+
         TelaCadastroTipoEquipamento telacadtipoequip = new TelaCadastroTipoEquipamento();
-        telacadtipoequip.setVisible(true);  
+        telacadtipoequip.setVisible(true);
     }//GEN-LAST:event_jButtonTipoEquipActionPerformed
 
     private void txtSerieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSerieActionPerformed
@@ -604,274 +604,274 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUnidadeActionPerformed
 
     private void JButtonFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonFornecedorActionPerformed
-        //Chama tela cadastro fornecedor 
+        //Chama tela cadastro fornecedor
         this.dispose();
-        
+
         TelaCadastroFornecedor telacadfornecedor = new TelaCadastroFornecedor();
-        telacadfornecedor.setVisible(true);  
+        telacadfornecedor.setVisible(true);
     }//GEN-LAST:event_JButtonFornecedorActionPerformed
 
     private void txtColunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtColunaActionPerformed
 
         if(txtColuna.getSelectedItem().equals("UNIDADE"))
         {
-            
+
             //chama este metodo do controller
-            controller.atualizaCampoUnidade();    
-            
+            controller.atualizaCampoUnidade();
+
         }
         else if(txtColuna.getSelectedItem().equals("TIPOEQUIP"))
         {
-            
+
             //chama este metodo do controller
             controller.atualizarCampoTipoEquip();
-            
-        } 
+
+        }
         else if(txtColuna.getSelectedItem().equals("FORNECEDOR"))
         {
-            
+
             //chama este metodo do controller
             controller.atualizaFornecedorPesquisa();
-            
-        }    
+
+        }
         else if(txtColuna.getSelectedItem().equals("STATUS"))
         {
-            
+
             //chama este metodo do controller
             controller.atualizarCampoStatus();
-            
-        } 
+
+        }
         else if(txtColuna.getSelectedItem().equals("EQUIPAMENTO"))
         {
-            
+
             txtCampo.removeAllItems();
-            
+
             String alugado = "ALUGADO";
             String patrimonio = "PATRIMONIO";
             String convenio = "CONVENIO";
-            
+
             //adciona os itens para o combobox campo
             txtCampo.addItem(alugado);
             txtCampo.addItem(patrimonio);
             txtCampo.addItem(convenio);
-            
+
             if(txtCampo.getSelectedItem().equals("ALUGADO"))
             {
-                
+
                 //Captura valor string selecionado do combbobox
                 alugado = txtCampo.getSelectedItem().toString();
-                
+
             }
             else if(txtCampo.getSelectedItem().equals("PATRIMONIO"))
             {
-                
+
                 //Captura valor string selecionado do combbobox
-                patrimonio = txtCampo.getSelectedItem().toString();                
-                
+                patrimonio = txtCampo.getSelectedItem().toString();
+
             }
             else if(txtCampo.getSelectedItem().equals("CONVENIO"))
             {
-                
+
                 //Captura valor string selecionado do combbobox
-                convenio = txtCampo.getSelectedItem().toString();                    
-                
-            }    
-            
-        }   
+                convenio = txtCampo.getSelectedItem().toString();
+
+            }
+
+        }
         else if(txtColuna.getSelectedItem().equals("GERAL"))
         {
             //deixa txtCampo vazio
-            txtCampo.removeAllItems();  
-            
-        }       
+            txtCampo.removeAllItems();
+
+        }
     }//GEN-LAST:event_txtColunaActionPerformed
 
     private void btnPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPDFActionPerformed
-        
+
         String tipoequip = txtTipoEquip.getSelectedItem().toString();
 
         if(!txtTipoEquip.getSelectedItem().equals(tipoequip))
         {
-            
+
             String fornecedor = txtFornecedor.getSelectedItem().toString();
-            
+
             if(!txtFornecedor.getSelectedItem().equals(fornecedor))
             {
-                
-                
-                
+
+
+
                 if(txtColuna.getSelectedItem().equals("EQUIPAMENTO"))
                 {
-                    
+
                     String alugado = "ALUGADO";
                     String patrimonio = "PATRIMONIO";
                     String convenio = "CONVENIO";
-            
+
                     //adciona os itens para o combobox campo
                     txtCampo.addItem(alugado);
                     txtCampo.addItem(patrimonio);
                     txtCampo.addItem(convenio);
-            
+
                     if(txtCampo.getSelectedItem().equals("ALUGADO"))
                     {
-                
+
                         //Captura valor string selecionado do combbobox
                         alugado = txtCampo.getSelectedItem().toString();
-                
+
                         RelatorioTipoEquipFornecedorEquip rellatipoequipfornecequip = new RelatorioTipoEquipFornecedorEquip();
-                        
+
                         rellatipoequipfornecequip.gerarPDF(tipoequip, fornecedor, alugado);
-                
+
                         txtCampo.removeAllItems();
 
                     }
                     else if(txtCampo.getSelectedItem().equals("PATRIMONIO"))
                     {
-                
+
                         //Captura valor string selecionado do combbobox
                         patrimonio = txtCampo.getSelectedItem().toString();
-                
+
                         RelatorioTipoEquipFornecedorEquip rellatipoequipfornecequip = new RelatorioTipoEquipFornecedorEquip();
-                        
+
                         rellatipoequipfornecequip.gerarPDF(tipoequip, fornecedor, patrimonio);
-                
-                        txtCampo.removeAllItems();            
-                
+
+                        txtCampo.removeAllItems();
+
                     }
                     else if(txtCampo.getSelectedItem().equals("CONVENIO"))
                     {
-                
+
                         //Captura valor string selecionado do combbobox
                         convenio = txtCampo.getSelectedItem().toString();
-                
+
                         RelatorioTipoEquipFornecedorEquip rellatipoequipfornecequip = new RelatorioTipoEquipFornecedorEquip();
-                        
+
                         rellatipoequipfornecequip.gerarPDF(tipoequip, fornecedor, convenio);
-                
-                        txtCampo.removeAllItems();                 
-                
-                    }                        
-                }    
-            }    
-        }            
-        
+
+                        txtCampo.removeAllItems();
+
+                    }
+                }
+            }
+        }
+
         if(txtColuna.getSelectedItem().equals("UNIDADE"))
         {
-            
+
             String unidadenome = txtCampo.getSelectedItem().toString();
-            
+
             RelatorioUnidade relatoriounidade =new RelatorioUnidade();
-            
+
             //chama o metodo gerarPDF
             relatoriounidade.gerarPDF(unidadenome);
-            
-        }    
+
+        }
 
         else if(txtColuna.getSelectedItem().equals("TIPOEQUIP"))
         {
-            
+
             String tipoequipamentonome = txtCampo.getSelectedItem().toString();
-            
+
             RelatorioTipoEquip relattipoequip = new RelatorioTipoEquip();
-            
+
             //chama o metodo gerarPDF
-            relattipoequip.gerarPDF(tipoequipamentonome);     
-            
-        }    
-        
+            relattipoequip.gerarPDF(tipoequipamentonome);
+
+        }
+
         else if(txtColuna.getSelectedItem().equals("FORNECEDOR"))
         {
-            
+
             String fornecedor = txtCampo.getSelectedItem().toString();
-            
+
             RelatorioFornecedor relatfornecedor = new RelatorioFornecedor();
-            
+
             //chama metodo gerarPDF
             relatfornecedor.gerarPDF(fornecedor);
-           
-            
-        }    
+
+
+        }
         else if(txtColuna.getSelectedItem().equals("STATUS"))
         {
-            
+
             String status = txtCampo.getSelectedItem().toString();
-            
+
             RelatorioStatus relattipoequip = new RelatorioStatus();
-            
+
             //chama o metodo gerarPDF
             relattipoequip.gerarPDF(status);
-            
-        }   
+
+        }
          else if(txtColuna.getSelectedItem().equals("EQUIPAMENTO"))
         {
-            
+
             String alugado = "ALUGADO";
             String patrimonio = "PATRIMONIO";
             String convenio = "CONVENIO";
-            
+
             //adciona os itens para o combobox campo
             txtCampo.addItem(alugado);
             txtCampo.addItem(patrimonio);
             txtCampo.addItem(convenio);
-            
+
             if(txtCampo.getSelectedItem().equals("ALUGADO"))
             {
-                
+
                 //Captura valor string selecionado do combbobox
                 alugado = txtCampo.getSelectedItem().toString();
-                
+
                 RelatorioEquipamentoAlugado relatalugado = new RelatorioEquipamentoAlugado();
-                
+
                 //chama metodo gerarPDF
                 relatalugado.gerarPDF(alugado);
-                
+
             }
             else if(txtCampo.getSelectedItem().equals("PATRIMONIO"))
             {
-                
+
                 //Captura valor string selecionado do combbobox
-                patrimonio = txtCampo.getSelectedItem().toString(); 
-                
+                patrimonio = txtCampo.getSelectedItem().toString();
+
                 RelatorioEquipamentoPatrimonio relatpatri = new RelatorioEquipamentoPatrimonio();
-                
+
                 //chama metodo gerarPDF
                 relatpatri.gerarPDF(patrimonio);
-                
+
             }
             else if(txtCampo.getSelectedItem().equals("CONVENIO"))
             {
-                
+
                 //Captura valor string selecionado do combbobox
-                convenio = txtCampo.getSelectedItem().toString();      
-                
+                convenio = txtCampo.getSelectedItem().toString();
+
                 RelatorioEquipamentoConvenio relatconvenio  = new RelatorioEquipamentoConvenio();
-                
+
                 //chama metodo gerarPDF
                 relatconvenio.gerarPDF(convenio);
-                
-            }     
-            
-        }   
+
+            }
+
+        }
         else if(txtColuna.getSelectedItem().equals("GERAL"))
         {
-            
+
             RelatorioGeral relatoriogeral = new RelatorioGeral();
-        
+
             //chama o metodo gerarPDF
-            relatoriogeral.gerarPDF();            
-            
-        }         
+            relatoriogeral.gerarPDF();
+
+        }
     }//GEN-LAST:event_btnPDFActionPerformed
 
     private void txtFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFornecedorActionPerformed
-            
+
     }//GEN-LAST:event_txtFornecedorActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -932,7 +932,7 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
     public static void setjButtonUnidade(JButton jButtonUnidade) {
         TelaCadastroEquipamento.jButtonUnidade = jButtonUnidade;
     }
-    
+
     public JComboBox<String> getTxtFornecedor() {
         return txtFornecedor;
     }
@@ -940,20 +940,20 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
     public void getTxtFornecedor(JComboBox<String> txtFornecedor) {
         this.txtFornecedor = txtFornecedor;
     }
-    
+
     public JComboBox<String> getTxtEquipamento()
     {
-        
+
         return txtEquipamento;
-        
-    }    
+
+    }
 
     public void setTxtEquipamento(JComboBox<String> txtEquipamento)
     {
-        
+
         this.txtEquipamento = txtEquipamento;
-        
-    }        
+
+    }
 
     public JComboBox<String> getTxtFabricante() {
         return txtFabricante;
@@ -986,21 +986,21 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
     public void setTxtSerie(JTextField txtSerie) {
         this.txtSerie = txtSerie;
     }
-    
+
     public JComboBox<String> getTxtStatus()
     {
-        
+
         return txtStatus;
-        
-    }        
-    
+
+    }
+
     public void setTxtStatus(JComboBox<String> txtStatus)
     {
-        
+
         this.txtStatus = txtStatus;
-        
-    }        
-    
+
+    }
+
     public JComboBox<String> getTxtTipoEquip() {
         return txtTipoEquip;
     }
@@ -1033,7 +1033,7 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
         this.txtObservacao = txtObservacao;
     }
 
-    //getters e setters dos botoes    
+    //getters e setters dos botoes
     public static JButton getBtnEditar() {
         return btnEditar;
     }
@@ -1056,8 +1056,8 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
 
     public static void setBtnSalvar(JButton btnSalvar) {
         TelaCadastroEquipamento.btnSalvar = btnSalvar;
-    } 
-    
+    }
+
     //getters e setters botões
     public static JButton getBtnExcluir() {
         return btnExcluir;
@@ -1082,8 +1082,8 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
     public static void setBtnVoltar1(JButton btnVoltar1) {
         TelaCadastroEquipamento.btnVoltar1 = btnVoltar1;
     }
-    
-    
+
+
     //getters e setters tabela
     public static JTable getjTabelaCadEquip() {
         return jTabelaCadEquip;
@@ -1099,8 +1099,8 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
 
     public static void setTxtColuna(JComboBox txtColuna) {
         TelaCadastroEquipamento.txtColuna = txtColuna;
-    }    
-    
+    }
+
     public static JComboBox getTxtCampo() {
         return txtCampo;
     }
@@ -1108,35 +1108,35 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
     public static void setTxtCampo(JComboBox txtCampo) {
         TelaCadastroEquipamento.txtCampo = txtCampo;
     }
-    
-    
-    
+
+
+
     public void iniciar()
     {
             //impede o usuario de mover as colunas para reoodena-las
             jTabelaCadEquip.getTableHeader().setReorderingAllowed(false);
-            
+
             //chama este metodo do controller
             controller.atualizaUnidade();
-            
+
             //chava este metodo do controller
             controller.atualizaFornecedor();
-            
+
             //chama este metodo do controller
             controller.atualizarFabricante();
-            
+
             //chama este metodo do controller
             controller.atualizaTipoEquipamento();
-            
+
             //chama este metodo do controller
             controller.tabelaEquipamentos();
-       
+
             jTabelaCadEquip.setRowSelectionAllowed(true);
-            
+
             //impessa o jtable de se auto redimensionar
             jTabelaCadEquip.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-            
-            
+
+
             //as linhas abaixo define o tamanho das colunas da tabela
             //tabela pegue o modelo de coluna, pegue a coluna zero e sete a largura
             jTabelaCadEquip.getColumnModel().getColumn(0).setPreferredWidth(74);
@@ -1149,24 +1149,24 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
             jTabelaCadEquip.getColumnModel().getColumn(7).setPreferredWidth(95);
             jTabelaCadEquip.getColumnModel().getColumn(8).setPreferredWidth(96);
             jTabelaCadEquip.getColumnModel().getColumn(9).setPreferredWidth(95);
-            jTabelaCadEquip.getColumnModel().getColumn(10).setPreferredWidth(175);      
-    }      
-    
+            jTabelaCadEquip.getColumnModel().getColumn(10).setPreferredWidth(175);
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JButton JButtonFabricante;
-    public static javax.swing.JButton JButtonFornecedor;
-    public static javax.swing.JButton btnEditar;
-    public static javax.swing.JButton btnExcluir;
-    public static javax.swing.JButton btnNovo;
-    public static javax.swing.JButton btnPDF;
-    public static javax.swing.JButton btnPesquisar;
-    public static javax.swing.JButton btnSalvar;
-    public static javax.swing.JButton btnVoltar1;
-    public static javax.swing.JButton jButtonTipoEquip;
-    public static javax.swing.JButton jButtonUnidade;
+    public static JButton JButtonFabricante;
+    public static JButton JButtonFornecedor;
+    public static JButton btnEditar;
+    public static JButton btnExcluir;
+    public static JButton btnNovo;
+    public static JButton btnPDF;
+    public static JButton btnPesquisar;
+    public static JButton btnSalvar;
+    public static JButton btnVoltar1;
+    public static JButton jButtonTipoEquip;
+    public static JButton jButtonUnidade;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    public static javax.swing.JTable jTabelaCadEquip;
+    public static JTable jTabelaCadEquip;
     private javax.swing.JLabel lblCampo;
     private javax.swing.JLabel lblColuna;
     private javax.swing.JLabel lblCtrldeterc;
@@ -1182,19 +1182,19 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblUnidade;
     private javax.swing.JLabel lblfundo;
-    public static javax.swing.JComboBox txtCampo;
-    public static javax.swing.JComboBox txtColuna;
-    public static javax.swing.JComboBox<String> txtEquipamento;
-    public static javax.swing.JComboBox<String> txtFabricante;
-    public static javax.swing.JComboBox txtFornecedor;
-    public static javax.swing.JTextField txtId;
-    public static javax.swing.JTextField txtModelo;
-    public static javax.swing.JTextArea txtObservacao;
-    public static javax.swing.JTextField txtSerie;
-    public static javax.swing.JComboBox<String> txtStatus;
-    public static javax.swing.JComboBox txtTipoEquip;
-    public static javax.swing.JTextField txtTombo;
-    public static javax.swing.JComboBox txtUnidade;
+    public static JComboBox txtCampo;
+    public static JComboBox txtColuna;
+    public static JComboBox<String> txtEquipamento;
+    public static JComboBox<String> txtFabricante;
+    public static JComboBox txtFornecedor;
+    public static JTextField txtId;
+    public static JTextField txtModelo;
+    public static JTextArea txtObservacao;
+    public static JTextField txtSerie;
+    public static JComboBox<String> txtStatus;
+    public static JComboBox txtTipoEquip;
+    public static JTextField txtTombo;
+    public static JComboBox txtUnidade;
     // End of variables declaration//GEN-END:variables
 
 }

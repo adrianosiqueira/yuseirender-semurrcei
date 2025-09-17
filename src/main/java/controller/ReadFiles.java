@@ -17,7 +17,7 @@ public class ReadFiles {
         BufferedReader reader = new BufferedReader(fileReader);
         String data = null;
         while ((data = reader.readLine()) != null) {
-            controller.Conexao.url = data;
+            Conexao.url = data;
         }
         fileReader.close();
         reader.close();
@@ -28,7 +28,7 @@ public class ReadFiles {
         BufferedReader reader = new BufferedReader(fileReader);
         String data = null;
         while ((data = reader.readLine()) != null) {
-            controller.Conexao.usr = data;
+            Conexao.usr = data;
         }
         fileReader.close();
         reader.close();
@@ -39,7 +39,7 @@ public class ReadFiles {
         BufferedReader reader = new BufferedReader(fileReader);
         String data = null;
         while ((data = reader.readLine()) != null) {
-            controller.Conexao.pass = data;
+            Conexao.pass = data;
         }
         fileReader.close();
         reader.close();

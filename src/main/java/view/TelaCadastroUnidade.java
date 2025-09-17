@@ -1,36 +1,37 @@
 package view;
 
-import controller.CadastroTipoEquipamentoController;
-import controller.helper.CadastroTipoEquipamentoHelper;
+import controller.CadastroUnidadeController;
+import controller.helper.CadastroUnidadeHelper;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-public class TelaCadastroTipoEquipamento extends javax.swing.JFrame {
+
+public class TelaCadastroUnidade extends javax.swing.JFrame {
 
     //criando campo controller
-    private final CadastroTipoEquipamentoController controller;
-    
+    private final CadastroUnidadeController controller;
+
     //criando campo helper
-    private final CadastroTipoEquipamentoHelper helper;
-    
-    public TelaCadastroTipoEquipamento() {
+    private final CadastroUnidadeHelper helper;
+
+    public TelaCadastroUnidade() {
         initComponents();
-        
+
         this.setResizable(false);
-        
+
         //controller esta passando view como parametro
-        controller = new CadastroTipoEquipamentoController(this);
-        
+        controller = new CadastroUnidadeController(this);
+
         //helper esta passando view como parametro
-        helper = new CadastroTipoEquipamentoHelper(this);          
-        
+        helper = new CadastroUnidadeHelper(this);
+
         //inicia essa tela no centro
         this.setLocationRelativeTo(null);
-        
+
         //chama o metodo iniciar
-        this.iniciar();          
+        this.iniciar();
     }
 
     /**
@@ -42,30 +43,54 @@ public class TelaCadastroTipoEquipamento extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTabelaTipoEquipamento = new javax.swing.JTable();
-        txtId = new javax.swing.JTextField();
+        lblTitulo = new javax.swing.JLabel();
         lblID = new javax.swing.JLabel();
-        lblTipoEquipamento = new javax.swing.JLabel();
-        txtTipoEquipamento = new javax.swing.JTextField();
-        btnSalvar = new javax.swing.JButton();
-        btnExcluir = new javax.swing.JButton();
-        btnVoltar1 = new javax.swing.JButton();
-        btnPesquisar = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
-        btnNovo = new javax.swing.JButton();
-        lblFundo = new javax.swing.JLabel();
+        txtId = new JTextField();
+        lblUnidade = new javax.swing.JLabel();
+        txtUnidade = new JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTabelaCadUnidade = new JTable();
+        btnSalvar = new JButton();
+        btnVoltar1 = new JButton();
+        btnExcluir = new JButton();
+        btnPesquisar = new JButton();
+        btnEditar = new JButton();
+        btnNovo = new JButton();
+        jFundo = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTabelaTipoEquipamento.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jTabelaTipoEquipamento.setModel(new javax.swing.table.DefaultTableModel(
+        lblTitulo.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitulo.setText("CADASTRO DE UNIDADE");
+        getContentPane().add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, 380, -1));
+
+        lblID.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblID.setForeground(new java.awt.Color(255, 255, 255));
+        lblID.setText("ID:");
+        getContentPane().add(lblID, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, 30));
+
+        txtId.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        txtId.setEnabled(false);
+        getContentPane().add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 100, -1));
+
+        lblUnidade.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblUnidade.setForeground(new java.awt.Color(255, 255, 255));
+        lblUnidade.setText("UNIDADE:");
+        getContentPane().add(lblUnidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, -1, 30));
+
+        txtUnidade.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        getContentPane().add(txtUnidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, 180, -1));
+
+        jTabelaCadUnidade.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jTabelaCadUnidade.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "id", "tipoequipamento"
+                "id", "unidadenome"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -76,38 +101,25 @@ public class TelaCadastroTipoEquipamento extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTabelaTipoEquipamento.setAutoscrolls(false);
-        jTabelaTipoEquipamento.setFocusable(false);
-        jTabelaTipoEquipamento.setRequestFocusEnabled(false);
-        jTabelaTipoEquipamento.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jTabelaTipoEquipamento.getTableHeader().setReorderingAllowed(false);
-        jTabelaTipoEquipamento.setUpdateSelectionOnSort(false);
-        jTabelaTipoEquipamento.setVerifyInputWhenFocusTarget(false);
-        jTabelaTipoEquipamento.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTabelaCadUnidade.setAutoscrolls(false);
+        jTabelaCadUnidade.setFocusable(false);
+        jTabelaCadUnidade.setRequestFocusEnabled(false);
+        jTabelaCadUnidade.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jTabelaCadUnidade.getTableHeader().setReorderingAllowed(false);
+        jTabelaCadUnidade.setUpdateSelectionOnSort(false);
+        jTabelaCadUnidade.setVerifyInputWhenFocusTarget(false);
+        jTabelaCadUnidade.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTabelaTipoEquipamentoMouseClicked(evt);
+                jTabelaCadUnidadeMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTabelaTipoEquipamento);
+        jScrollPane1.setViewportView(jTabelaCadUnidade);
+        if (jTabelaCadUnidade.getColumnModel().getColumnCount() > 0) {
+            jTabelaCadUnidade.getColumnModel().getColumn(0).setResizable(false);
+            jTabelaCadUnidade.getColumnModel().getColumn(1).setResizable(false);
+        }
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 1250, 360));
-
-        txtId.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        txtId.setEnabled(false);
-        getContentPane().add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 100, -1));
-
-        lblID.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblID.setForeground(new java.awt.Color(255, 255, 255));
-        lblID.setText("ID:");
-        getContentPane().add(lblID, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, 30));
-
-        lblTipoEquipamento.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblTipoEquipamento.setForeground(new java.awt.Color(255, 255, 255));
-        lblTipoEquipamento.setText("TIPOEQUIPAMENTO:");
-        getContentPane().add(lblTipoEquipamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, -1, 30));
-
-        txtTipoEquipamento.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        getContentPane().add(txtTipoEquipamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 190, 180, -1));
 
         btnSalvar.setBackground(new java.awt.Color(30, 129, 176));
         btnSalvar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -120,17 +132,6 @@ public class TelaCadastroTipoEquipamento extends javax.swing.JFrame {
         });
         getContentPane().add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 240, 110, 40));
 
-        btnExcluir.setBackground(new java.awt.Color(30, 129, 176));
-        btnExcluir.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnExcluir.setForeground(new java.awt.Color(255, 255, 255));
-        btnExcluir.setText("EXCLUIR");
-        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExcluirActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 240, 110, 40));
-
         btnVoltar1.setBackground(new java.awt.Color(30, 129, 176));
         btnVoltar1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnVoltar1.setForeground(new java.awt.Color(255, 255, 255));
@@ -141,6 +142,17 @@ public class TelaCadastroTipoEquipamento extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnVoltar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 240, 110, 40));
+
+        btnExcluir.setBackground(new java.awt.Color(30, 129, 176));
+        btnExcluir.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnExcluir.setForeground(new java.awt.Color(255, 255, 255));
+        btnExcluir.setText("EXCLUIR");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 240, 110, 40));
 
         btnPesquisar.setBackground(new java.awt.Color(30, 129, 176));
         btnPesquisar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -175,31 +187,23 @@ public class TelaCadastroTipoEquipamento extends javax.swing.JFrame {
         });
         getContentPane().add(btnNovo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 180, 110, 40));
 
-        lblFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/PARTE INTERNA2.png"))); // NOI18N
-        getContentPane().add(lblFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/PARTE INTERNA2.png"))); // NOI18N
+        getContentPane().add(jFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTabelaTipoEquipamentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabelaTipoEquipamentoMouseClicked
+    private void jTabelaCadUnidadeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabelaCadUnidadeMouseClicked
         // TODO add your handling code here:
         helper.setModelo();
-    }//GEN-LAST:event_jTabelaTipoEquipamentoMouseClicked
+    }//GEN-LAST:event_jTabelaCadUnidadeMouseClicked
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        //controller chama metodo salvar tipo equipamento
-        controller.salvarTipoEquipamento();
+        //controller chama metodo salvar unidade
+        controller.salvarUnidade();
 
         iniciar();
     }//GEN-LAST:event_btnSalvarActionPerformed
-
-    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        //controller chama metodo deletar tipo equipamento
-        controller.deletar();
-
-        iniciar();
-
-    }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnVoltar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar1ActionPerformed
         //tente chamar a tela cadastro equipamento
@@ -208,8 +212,8 @@ public class TelaCadastroTipoEquipamento extends javax.swing.JFrame {
 
             this.dispose();
 
-            TelaCadastroEquipamento telacadequipamento = new TelaCadastroEquipamento();
-            telacadequipamento.setVisible(true);
+        TelaCadastroEquipamento telacadequipamento = new TelaCadastroEquipamento();
+        telacadequipamento.setVisible(true);
 
         }
         //se não conseguir pegue a excesão e mostre a mensagem na tela junto com a excesão
@@ -219,17 +223,27 @@ public class TelaCadastroTipoEquipamento extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error ao chamar a tela cadastro equipamento!" + ex);
 
         }
+
     }//GEN-LAST:event_btnVoltar1ActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        //controller chama metodo deletar unidade
+        controller.deletar();
+
+        iniciar();
+
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
 
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        //controller chama metodo update tipo equipamento
-        controller.updateTipoEquipamento();
+        //controller chama metodo update unidade
+        controller.updateUnidade();
 
         iniciar();
+
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
@@ -244,7 +258,7 @@ public class TelaCadastroTipoEquipamento extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -254,20 +268,20 @@ public class TelaCadastroTipoEquipamento extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroTipoEquipamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroUnidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroTipoEquipamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroUnidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroTipoEquipamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroUnidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroTipoEquipamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroUnidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaCadastroTipoEquipamento().setVisible(true);
+                new TelaCadastroUnidade().setVisible(true);
             }
         });
     }
@@ -278,7 +292,7 @@ public class TelaCadastroTipoEquipamento extends javax.swing.JFrame {
     }
 
     public static void setBtnEditar(JButton btnEditar) {
-        TelaCadastroTipoEquipamento.btnEditar = btnEditar;
+        TelaCadastroUnidade.btnEditar = btnEditar;
     }
 
     public static JButton getBtnExcluir() {
@@ -286,7 +300,7 @@ public class TelaCadastroTipoEquipamento extends javax.swing.JFrame {
     }
 
     public static void setBtnExcluir(JButton btnExcluir) {
-        TelaCadastroTipoEquipamento.btnExcluir = btnExcluir;
+        TelaCadastroUnidade.btnExcluir = btnExcluir;
     }
 
     public static JButton getBtnNovo() {
@@ -294,7 +308,15 @@ public class TelaCadastroTipoEquipamento extends javax.swing.JFrame {
     }
 
     public static void setBtnNovo(JButton btnNovo) {
-        TelaCadastroTipoEquipamento.btnNovo = btnNovo;
+        TelaCadastroUnidade.btnNovo = btnNovo;
+    }
+
+    public static JButton getBtnPesquisar() {
+        return btnPesquisar;
+    }
+
+    public static void setBtnPesquisar(JButton btnPesquisar) {
+        TelaCadastroUnidade.btnPesquisar = btnPesquisar;
     }
 
     public static JButton getBtnSalvar() {
@@ -302,7 +324,7 @@ public class TelaCadastroTipoEquipamento extends javax.swing.JFrame {
     }
 
     public static void setBtnSalvar(JButton btnSalvar) {
-        TelaCadastroTipoEquipamento.btnSalvar = btnSalvar;
+        TelaCadastroUnidade.btnSalvar = btnSalvar;
     }
 
     public static JButton getBtnVoltar1() {
@@ -310,15 +332,15 @@ public class TelaCadastroTipoEquipamento extends javax.swing.JFrame {
     }
 
     public static void setBtnVoltar1(JButton btnVoltar1) {
-        TelaCadastroTipoEquipamento.btnVoltar1 = btnVoltar1;
+        TelaCadastroUnidade.btnVoltar1 = btnVoltar1;
     }
 
-    public static JTable getjTabelaTipoEquipamento() {
-        return jTabelaTipoEquipamento;
+    public static JTable getjTabelaCadUnidade() {
+        return jTabelaCadUnidade;
     }
 
-    public static void setjTabelaTipoEquipamento(JTable jTabelaTipoEquipamento) {
-        TelaCadastroTipoEquipamento.jTabelaTipoEquipamento = jTabelaTipoEquipamento;
+    public static void setjTabelaCadUnidade(JTable jTabelaCadUnidade) {
+        TelaCadastroUnidade.jTabelaCadUnidade = jTabelaCadUnidade;
     }
 
     public static JTextField getTxtId() {
@@ -326,51 +348,52 @@ public class TelaCadastroTipoEquipamento extends javax.swing.JFrame {
     }
 
     public static void setTxtId(JTextField txtId) {
-        TelaCadastroTipoEquipamento.txtId = txtId;
+        TelaCadastroUnidade.txtId = txtId;
     }
 
-    public static JTextField getTxtTipoEquipamento() {
-        return txtTipoEquipamento;
+    public static JTextField getTxtUnidade() {
+        return txtUnidade;
     }
 
-    public static void setTxtTipoEquipamento(JTextField txtTipoEquipamento) {
-        TelaCadastroTipoEquipamento.txtTipoEquipamento = txtTipoEquipamento;
+    public static void setTxtUnidade(JTextField txtUnidade) {
+        TelaCadastroUnidade.txtUnidade = txtUnidade;
     }
-    
+
     public void iniciar()
     {
-        
+
             //impede o usuario de mover as colunas para reoodena-las
-            jTabelaTipoEquipamento.getTableHeader().setReorderingAllowed(false);
-            
+            jTabelaCadUnidade.getTableHeader().setReorderingAllowed(false);
+
             //chama este metodo do controller
-            controller.tabelaTipoEquipamento();
-            
-            jTabelaTipoEquipamento.setRowSelectionAllowed(true);
-            
+            controller.tabelaUnidades();
+
+            jTabelaCadUnidade.setRowSelectionAllowed(true);
+
             //impessa o jtable de se auto redimensionar
-            jTabelaTipoEquipamento.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-            
+            jTabelaCadUnidade.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
             //as linhas abaixo define o tamanho das colunas da tabela
             //tabela pegue o modelo de coluna, pegue a coluna zero e sete a largura
-            jTabelaTipoEquipamento.getColumnModel().getColumn(0).setPreferredWidth(622);
-            jTabelaTipoEquipamento.getColumnModel().getColumn(1).setPreferredWidth(622);            
-        
-    }        
-    
+            jTabelaCadUnidade.getColumnModel().getColumn(0).setPreferredWidth(622);
+            jTabelaCadUnidade.getColumnModel().getColumn(1).setPreferredWidth(622);
+
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JButton btnEditar;
-    public static javax.swing.JButton btnExcluir;
-    public static javax.swing.JButton btnNovo;
-    public static javax.swing.JButton btnPesquisar;
-    public static javax.swing.JButton btnSalvar;
-    public static javax.swing.JButton btnVoltar1;
+    public static JButton btnEditar;
+    public static JButton btnExcluir;
+    public static JButton btnNovo;
+    public static JButton btnPesquisar;
+    public static JButton btnSalvar;
+    public static JButton btnVoltar1;
+    private javax.swing.JLabel jFundo;
     private javax.swing.JScrollPane jScrollPane1;
-    public static javax.swing.JTable jTabelaTipoEquipamento;
-    private javax.swing.JLabel lblFundo;
+    public static JTable jTabelaCadUnidade;
     private javax.swing.JLabel lblID;
-    private javax.swing.JLabel lblTipoEquipamento;
-    public static javax.swing.JTextField txtId;
-    public static javax.swing.JTextField txtTipoEquipamento;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel lblUnidade;
+    public static JTextField txtId;
+    public static JTextField txtUnidade;
     // End of variables declaration//GEN-END:variables
 }

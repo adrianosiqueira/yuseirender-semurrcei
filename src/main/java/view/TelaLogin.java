@@ -10,18 +10,18 @@ public class TelaLogin extends javax.swing.JFrame {
 
     //cria campo controller na view
     private final TelaLoginController controller;
-    
+
     //cria variavel inter
     public static String inter = "";
-    
+
     public TelaLogin() {
         initComponents();
         //inicie frame no meio
         this.setLocationRelativeTo(null);
-        
+
         //controlador passa esta view como parametro
         controller = new TelaLoginController(this);
-    }      
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -29,9 +29,9 @@ public class TelaLogin extends javax.swing.JFrame {
 
         lblLogin = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtLogin = new javax.swing.JTextField();
+        txtLogin = new JTextField();
         lblSenha = new javax.swing.JLabel();
-        txtSenha = new javax.swing.JPasswordField();
+        txtSenha = new JPasswordField();
         lblCadastre1 = new javax.swing.JLabel();
         lblEsqueci1 = new javax.swing.JLabel();
         btnSair = new javax.swing.JButton();
@@ -114,7 +114,7 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
         btnEntrar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+            public void keyPressed(KeyEvent evt) {
                 btnEntrarKeyPressed(evt);
             }
         });
@@ -143,37 +143,37 @@ public class TelaLogin extends javax.swing.JFrame {
 
         //tente entrar
         try {
-            
+
             //controller chama função autenticar
             controller.autenticar();
             this.dispose();
         } catch (SQLException ex) {
-            
-            
-            
+
+
+
         }
-        
+
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void txtLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoginActionPerformed
 
     }//GEN-LAST:event_txtLoginActionPerformed
 
-    private void btnEntrarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnEntrarKeyPressed
+    private void btnEntrarKeyPressed(KeyEvent evt) {//GEN-FIRST:event_btnEntrarKeyPressed
     if (evt.getKeyCode()==KeyEvent.VK_ENTER){
 
         //tente entrar
         try {
-            
+
             //controller chama função autenticar
             controller.autenticar();
             this.dispose();
         } catch (SQLException ex) {
-            
 
-            
+
+
         }
-        
+
     }
     }//GEN-LAST:event_btnEntrarKeyPressed
 
@@ -184,12 +184,12 @@ public class TelaLogin extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_lblCadastre1MouseClicked
 
-    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -218,10 +218,10 @@ public class TelaLogin extends javax.swing.JFrame {
         });
     }
 
-    //getters e setters da view    
+    //getters e setters da view
     public JTextField getTxtLogin() {
         return txtLogin;
-    }       
+    }
 
     public void setTxtLogin(JTextField txtLogin) {
         this.txtLogin = txtLogin;
@@ -234,7 +234,7 @@ public class TelaLogin extends javax.swing.JFrame {
     public void setTxtSenha(JPasswordField txtSenha) {
         this.txtSenha = txtSenha;
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEntrar;
     private javax.swing.JButton btnSair;
@@ -244,9 +244,9 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JLabel lblFundo;
     private javax.swing.JLabel lblLogin;
     private javax.swing.JLabel lblSenha;
-    public javax.swing.JTextField txtLogin;
-    public javax.swing.JPasswordField txtSenha;
+    public JTextField txtLogin;
+    public JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
-       
-    
+
+
 }

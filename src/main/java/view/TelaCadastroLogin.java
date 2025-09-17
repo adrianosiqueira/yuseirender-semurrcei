@@ -14,28 +14,28 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 public class TelaCadastroLogin extends javax.swing.JFrame {
-    
+
     //criando campo controller
     private final CadastroLoginController controller;
-    
+
     //criando campo helper
     private final CadastroLoginHelper helper;
 
     public TelaCadastroLogin() {
         initComponents();
-        
+
         this.setLocationRelativeTo(null);
         btnExcluir.setEnabled(true);
-        
+
         //controller esta passando view como parametro
         controller = new CadastroLoginController(this);
-        
+
         //helper esta passando view como parametro
-        helper = new CadastroLoginHelper(this);        
-        
+        helper = new CadastroLoginHelper(this);
+
         //chama o metodo iniciar
         this.iniciar();
-        
+
     }
 
     /**
@@ -47,34 +47,34 @@ public class TelaCadastroLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnExcluir = new javax.swing.JButton();
-        btnNovo = new javax.swing.JButton();
-        btnVoltar1 = new javax.swing.JButton();
-        btnPesquisar = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
-        btnSalvar = new javax.swing.JButton();
+        btnExcluir = new JButton();
+        btnNovo = new JButton();
+        btnVoltar1 = new JButton();
+        btnPesquisar = new JButton();
+        btnEditar = new JButton();
+        btnSalvar = new JButton();
         jPanelDados = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTableLogins = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        lblTitulo = new javax.swing.JLabel();
-        lblLogin = new javax.swing.JLabel();
-        lblData = new javax.swing.JLabel();
-        lblPesquisarNome = new javax.swing.JLabel();
-        lblID = new javax.swing.JLabel();
-        txtID = new javax.swing.JTextField();
-        txtPesquisarNome = new javax.swing.JTextField();
-        txtNome = new javax.swing.JTextField();
-        lblNome = new javax.swing.JLabel();
-        txtLogin = new javax.swing.JTextField();
-        txtTipo = new javax.swing.JComboBox<>();
-        lblSenha = new javax.swing.JLabel();
+        jTableLogins = new JTable();
+        jLabel1 = new JLabel();
+        lblTitulo = new JLabel();
+        lblLogin = new JLabel();
+        lblData = new JLabel();
+        lblPesquisarNome = new JLabel();
+        lblID = new JLabel();
+        txtID = new JTextField();
+        txtPesquisarNome = new JTextField();
+        txtNome = new JTextField();
+        lblNome = new JLabel();
+        txtLogin = new JTextField();
+        txtTipo = new JComboBox<>();
+        lblSenha = new JLabel();
         txtData = new com.toedter.calendar.JDateChooser();
-        txtSenha = new javax.swing.JPasswordField();
-        lblTipo = new javax.swing.JLabel();
-        txtEmail = new javax.swing.JTextField();
-        lblEmail = new javax.swing.JLabel();
-        lblFundo = new javax.swing.JLabel();
+        txtSenha = new JPasswordField();
+        lblTipo = new JLabel();
+        txtEmail = new JTextField();
+        lblEmail = new JLabel();
+        lblFundo = new JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -292,61 +292,61 @@ public class TelaCadastroLogin extends javax.swing.JFrame {
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
 
         controller.deletarUsuario();
-        
+
         iniciar();
-        
+
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
 
             //controller chama metodo salvar usuario
             controller.salvarUsuario();
-            
+
             iniciar();
-                          
+
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
-        
+
         //ao clickar chama o helper em novo seta todos os campos como true
         helper.desbloquearCampos();
-        
+
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnVoltar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar1ActionPerformed
 
         try
         {
-            
 
-            this.dispose();    
-            
+
+            this.dispose();
+
             TelaPrincipal telaprincipal = new TelaPrincipal();
-            telaprincipal.setVisible(true);             
-            
+            telaprincipal.setVisible(true);
+
         }
         catch(Exception ex)
         {
-            
+
             JOptionPane.showMessageDialog(null, "Error ao chamar a tela principal!" + ex);
-            
-        }    
+
+        }
     }//GEN-LAST:event_btnVoltar1ActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-            
+
             //controller chama metoto salvar usuario
             controller.updateUsuario();
-            
+
             iniciar();
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-            
+
             controller.selecioneAllLogin();
-            
+
             iniciar();
-        
+
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void txtTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoActionPerformed
@@ -355,7 +355,7 @@ public class TelaCadastroLogin extends javax.swing.JFrame {
 
     private void txtPesquisarNomeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisarNomeKeyReleased
      controller.selecioneLoginsporNome();
-        
+
     }//GEN-LAST:event_txtPesquisarNomeKeyReleased
 
     private void jTableLoginsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableLoginsMouseClicked
@@ -369,7 +369,7 @@ public class TelaCadastroLogin extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -414,8 +414,8 @@ public class TelaCadastroLogin extends javax.swing.JFrame {
     public void setTxtID(JTextField txtID) {
         this.txtID = txtID;
     }
-    
-    
+
+
     public JTextField getTxtPesquisarNome() {
         return txtPesquisarNome;
     }
@@ -446,7 +446,7 @@ public class TelaCadastroLogin extends javax.swing.JFrame {
 
     public void setTxtNome(JTextField txtNome) {
         this.txtNome = txtNome;
-    }    
+    }
 
     public JPasswordField getTxtSenha() {
         return txtSenha;
@@ -462,7 +462,7 @@ public class TelaCadastroLogin extends javax.swing.JFrame {
 
     public void setTxtTipo(JComboBox<String> txtTipo) {
         this.txtTipo = txtTipo;
-    }    
+    }
 
     public static JDateChooser getTxtData() {
         return txtData;
@@ -470,8 +470,8 @@ public class TelaCadastroLogin extends javax.swing.JFrame {
 
     public static void setTxtData(JDateChooser txtData) {
         TelaCadastroLogin.txtData = txtData;
-    }  
-    
+    }
+
     //getter e setter botoes
     public JButton getBtnSalvar() {
         return btnSalvar;
@@ -480,7 +480,7 @@ public class TelaCadastroLogin extends javax.swing.JFrame {
     public void setBtnSalvar(JButton btnSalvar) {
         this.btnSalvar = btnSalvar;
     }
-    
+
     public JButton getBtnPesquisar() {
         return btnPesquisar;
     }
@@ -495,28 +495,28 @@ public class TelaCadastroLogin extends javax.swing.JFrame {
 
     public static void setBtnEditar(JButton btnEditar) {
         TelaCadastroLogin.btnEditar = btnEditar;
-    }    
-    
-    
+    }
+
+
     public void iniciar()
     {
             //as linhas abaixo substituem o textfield pela data atual do sistema
             //converter data para string
             Date data = new Date();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            
-                 
+
+
             //impede o usuario de mover as colunas para reoodena-las
             jTableLogins.getTableHeader().setReorderingAllowed(false);
-            
+
             controller.tabelaLogins();
-       
+
             jTableLogins.setRowSelectionAllowed(true);
-            
+
             //impessa o jtable de se auto redimensionar
             jTableLogins.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-            
-            
+
+
             //as linhas abaixo define o tamanho das colunas da tabela
             //tabela pegue o modelo de coluna, pegue a coluna zero e sete a largura
             jTableLogins.getColumnModel().getColumn(0).setPreferredWidth(59);
@@ -526,9 +526,9 @@ public class TelaCadastroLogin extends javax.swing.JFrame {
             jTableLogins.getColumnModel().getColumn(4).setPreferredWidth(206);
             jTableLogins.getColumnModel().getColumn(5).setPreferredWidth(60);
             jTableLogins.getColumnModel().getColumn(6).setPreferredWidth(247);
-    }  
-    
-    //getter e setter da tabela    
+    }
+
+    //getter e setter da tabela
     public JTable getjTableLogins() {
         return jTableLogins;
     }
@@ -536,36 +536,36 @@ public class TelaCadastroLogin extends javax.swing.JFrame {
     public void setjTableLogins(JTable jTableLogins) {
         this.jTableLogins = jTableLogins;
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JButton btnEditar;
-    public static javax.swing.JButton btnExcluir;
-    public static javax.swing.JButton btnNovo;
-    public static javax.swing.JButton btnPesquisar;
-    public static javax.swing.JButton btnSalvar;
-    private javax.swing.JButton btnVoltar1;
-    private javax.swing.JLabel jLabel1;
+    public static JButton btnEditar;
+    public static JButton btnExcluir;
+    public static JButton btnNovo;
+    public static JButton btnPesquisar;
+    public static JButton btnSalvar;
+    private JButton btnVoltar1;
+    private JLabel jLabel1;
     private javax.swing.JPanel jPanelDados;
     private javax.swing.JScrollPane jScrollPane1;
-    public static javax.swing.JTable jTableLogins;
-    private javax.swing.JLabel lblData;
-    private javax.swing.JLabel lblEmail;
-    private javax.swing.JLabel lblFundo;
-    private javax.swing.JLabel lblID;
-    private javax.swing.JLabel lblLogin;
-    private javax.swing.JLabel lblNome;
-    private javax.swing.JLabel lblPesquisarNome;
-    private javax.swing.JLabel lblSenha;
-    private javax.swing.JLabel lblTipo;
-    private javax.swing.JLabel lblTitulo;
+    public static JTable jTableLogins;
+    private JLabel lblData;
+    private JLabel lblEmail;
+    private JLabel lblFundo;
+    private JLabel lblID;
+    private JLabel lblLogin;
+    private JLabel lblNome;
+    private JLabel lblPesquisarNome;
+    private JLabel lblSenha;
+    private JLabel lblTipo;
+    private JLabel lblTitulo;
     public static com.toedter.calendar.JDateChooser txtData;
-    public javax.swing.JTextField txtEmail;
-    public javax.swing.JTextField txtID;
-    public javax.swing.JTextField txtLogin;
-    public javax.swing.JTextField txtNome;
-    public javax.swing.JTextField txtPesquisarNome;
-    public javax.swing.JPasswordField txtSenha;
-    public javax.swing.JComboBox<String> txtTipo;
+    public JTextField txtEmail;
+    public JTextField txtID;
+    public JTextField txtLogin;
+    public JTextField txtNome;
+    public JTextField txtPesquisarNome;
+    public JPasswordField txtSenha;
+    public JComboBox<String> txtTipo;
     // End of variables declaration//GEN-END:variables
 
 }

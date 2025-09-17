@@ -15,31 +15,31 @@ public class WriteFiles {
         String aux = "";
         File file = new File(path);
         BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-        writer.write(controller.Conexao.url);
+        writer.write(Conexao.url);
         //Criando o conteúdo do arquivo
         writer.flush();
         //Fechando conexão e escrita do arquivo.
         writer.close();
-        aux += ("Arquivo "+controller.Conexao.url+" gravado")+"\n";
+        aux += ("Arquivo "+ Conexao.url+" gravado")+"\n";
 
         file = new File(path1);
         writer = new BufferedWriter(new FileWriter(file));
-        writer.write(controller.Conexao.usr);
+        writer.write(Conexao.usr);
         //Criando o conteúdo do arquivo
         writer.flush();
         //Fechando conexão e escrita do arquivo.
         writer.close();
-        aux += ("Arquivo "+controller.Conexao.usr+" gravado")+"\n";
+        aux += ("Arquivo "+ Conexao.usr+" gravado")+"\n";
 
         file = new File(path2);
         writer = new BufferedWriter(new FileWriter(file));
-        writer.write(controller.Conexao.pass);
+        writer.write(Conexao.pass);
         //Criando o conteúdo do arquivo
         writer.flush();
         //Fechando conexão e escrita do arquivo.
         writer.close();
         aux += ("Arquivo ******* gravado")+"\n";
-        
+
         return aux;
     }
 }

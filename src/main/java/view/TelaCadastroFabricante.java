@@ -19,26 +19,26 @@ public class TelaCadastroFabricante extends javax.swing.JFrame {
 
     //criando campo controller
     private final CadastroFabricanteController controller;
-    
+
     //criando campo helper
     private final CadastroFabricanteHelper helper;
-    
+
     public TelaCadastroFabricante() {
         initComponents();
-        
+
         this.setResizable(false);
-        
+
         //controller esta passando view como parametro
         controller = new CadastroFabricanteController(this);
-        
+
         //helper esta passando view como parametro
-        helper = new CadastroFabricanteHelper(this);          
-        
+        helper = new CadastroFabricanteHelper(this);
+
         //inicia essa tela no centro
         this.setLocationRelativeTo(null);
-        
+
         //chama o metodo iniciar
-        this.iniciar();           
+        this.iniciar();
     }
 
     /**
@@ -50,17 +50,17 @@ public class TelaCadastroFabricante extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnSalvar = new javax.swing.JButton();
-        btnExcluir = new javax.swing.JButton();
-        btnVoltar1 = new javax.swing.JButton();
-        btnPesquisar = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
-        btnNovo = new javax.swing.JButton();
+        btnSalvar = new JButton();
+        btnExcluir = new JButton();
+        btnVoltar1 = new JButton();
+        btnPesquisar = new JButton();
+        btnEditar = new JButton();
+        btnNovo = new JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTabelaFabricante = new javax.swing.JTable();
+        jTabelaFabricante = new JTable();
         lblID = new javax.swing.JLabel();
-        txtId = new javax.swing.JTextField();
-        txtFabricante = new javax.swing.JTextField();
+        txtId = new JTextField();
+        txtFabricante = new JTextField();
         lblFabricantenome = new javax.swing.JLabel();
         lblTitulo = new javax.swing.JLabel();
         lblFundo = new javax.swing.JLabel();
@@ -203,7 +203,7 @@ public class TelaCadastroFabricante extends javax.swing.JFrame {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         //controller chama metodo salvar fabricante
         controller.salvarFabricante();
-        
+
         iniciar();
 
     }//GEN-LAST:event_btnSalvarActionPerformed
@@ -214,7 +214,7 @@ public class TelaCadastroFabricante extends javax.swing.JFrame {
 
         iniciar();
 
-        
+
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnVoltar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar1ActionPerformed
@@ -244,13 +244,13 @@ public class TelaCadastroFabricante extends javax.swing.JFrame {
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         //controller chama metodo update fabricante
         controller.updateFabricante();
-        
+
         iniciar();
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         //ao clickar chama o helper em novo seta todos os campos como true
-        helper.desbloquearCampos(); 
+        helper.desbloquearCampos();
     }//GEN-LAST:event_btnNovoActionPerformed
 
     /**
@@ -260,7 +260,7 @@ public class TelaCadastroFabricante extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -361,42 +361,42 @@ public class TelaCadastroFabricante extends javax.swing.JFrame {
     public static void setTxtId(JTextField txtId) {
         TelaCadastroFabricante.txtId = txtId;
     }
-    
+
     public void iniciar()
     {
-        
+
             //impede o usuario de mover as colunas para reoodena-las
             jTabelaFabricante.getTableHeader().setReorderingAllowed(false);
-            
+
             //chama este metodo do controller
             controller.tabelaFabricantes();
-            
+
             jTabelaFabricante.setRowSelectionAllowed(true);
-            
+
             //impessa o jtable de se auto redimensionar
             jTabelaFabricante.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-            
+
             //as linhas abaixo define o tamanho das colunas da tabela
             //tabela pegue o modelo de coluna, pegue a coluna zero e sete a largura
             jTabelaFabricante.getColumnModel().getColumn(0).setPreferredWidth(622);
-            jTabelaFabricante.getColumnModel().getColumn(1).setPreferredWidth(622);            
-        
-    }    
-    
+            jTabelaFabricante.getColumnModel().getColumn(1).setPreferredWidth(622);
+
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JButton btnEditar;
-    public static javax.swing.JButton btnExcluir;
-    public static javax.swing.JButton btnNovo;
-    public static javax.swing.JButton btnPesquisar;
-    public static javax.swing.JButton btnSalvar;
-    public static javax.swing.JButton btnVoltar1;
+    public static JButton btnEditar;
+    public static JButton btnExcluir;
+    public static JButton btnNovo;
+    public static JButton btnPesquisar;
+    public static JButton btnSalvar;
+    public static JButton btnVoltar1;
     private javax.swing.JScrollPane jScrollPane1;
-    public static javax.swing.JTable jTabelaFabricante;
+    public static JTable jTabelaFabricante;
     private javax.swing.JLabel lblFabricantenome;
     public static javax.swing.JLabel lblFundo;
     private javax.swing.JLabel lblID;
     private javax.swing.JLabel lblTitulo;
-    public static javax.swing.JTextField txtFabricante;
-    public static javax.swing.JTextField txtId;
+    public static JTextField txtFabricante;
+    public static JTextField txtId;
     // End of variables declaration//GEN-END:variables
 }

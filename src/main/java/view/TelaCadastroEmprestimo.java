@@ -13,27 +13,27 @@ import javax.swing.JTextField;
 
 
 public class TelaCadastroEmprestimo extends javax.swing.JFrame {
-    
+
     //criando campo controller
     private final CadastroEmprestimoController controller;
-    
+
     //criando campo helper
-    private final CadastroEmprestimoHelper helper;      
-    
+    private final CadastroEmprestimoHelper helper;
+
     public TelaCadastroEmprestimo() {
         initComponents();
-        
+
         //controller esta passando view como parametro
         controller = new CadastroEmprestimoController(this);
-        
+
         //helper esta passando view como parametro
-        helper = new CadastroEmprestimoHelper(this);          
-        
+        helper = new CadastroEmprestimoHelper(this);
+
         //inicia essa tela no centro
         this.setLocationRelativeTo(null);
-        
+
         //chama o metodo iniciar
-        this.iniciar();         
+        this.iniciar();
     }
 
     /**
@@ -45,43 +45,43 @@ public class TelaCadastroEmprestimo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTabelaCadEmprestimo = new javax.swing.JTable();
+        jScrollPane1 = new JScrollPane();
+        jTabelaCadEmprestimo = new JTable();
         lblTitulo = new javax.swing.JLabel();
         lblUnidade = new javax.swing.JLabel();
         lblID = new javax.swing.JLabel();
         lblDestino = new javax.swing.JLabel();
         lblNome = new javax.swing.JLabel();
-        txtDestino = new javax.swing.JComboBox<>();
-        txtEquipamento = new javax.swing.JComboBox<>();
+        txtDestino = new JComboBox<>();
+        txtEquipamento = new JComboBox<>();
         lblEquipamento = new javax.swing.JLabel();
-        txtUnidade = new javax.swing.JComboBox<>();
+        txtUnidade = new JComboBox<>();
         lblTipoEquip = new javax.swing.JLabel();
-        txtNome = new javax.swing.JComboBox<>();
+        txtNome = new JComboBox<>();
         txtDataSaida = new com.toedter.calendar.JDateChooser();
         txtDataDevolucao = new com.toedter.calendar.JDateChooser();
-        JButtonNome = new javax.swing.JButton();
+        JButtonNome = new JButton();
         lblDataDevolucao = new javax.swing.JLabel();
         lblTipo = new javax.swing.JLabel();
-        txtTipo = new javax.swing.JComboBox<>();
+        txtTipo = new JComboBox<>();
         lblStatus = new javax.swing.JLabel();
-        txtStatus = new javax.swing.JComboBox<>();
+        txtStatus = new JComboBox<>();
         lblDataSaida = new javax.swing.JLabel();
         lblObservacao = new javax.swing.JLabel();
-        btnPesquisar = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
-        btnExcluir = new javax.swing.JButton();
-        btnVoltar = new javax.swing.JButton();
-        btnNovo = new javax.swing.JButton();
-        txtTipoEquip = new javax.swing.JComboBox<>();
-        btnEmprestar = new javax.swing.JButton();
+        btnPesquisar = new JButton();
+        btnEditar = new JButton();
+        btnExcluir = new JButton();
+        btnVoltar = new JButton();
+        btnNovo = new JButton();
+        txtTipoEquip = new JComboBox<>();
+        btnEmprestar = new JButton();
         lblTombo = new javax.swing.JLabel();
-        txtTombo = new javax.swing.JComboBox();
+        txtTombo = new JComboBox();
         lblSerie = new javax.swing.JLabel();
-        txtSerie = new javax.swing.JComboBox();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        txtObservacao = new javax.swing.JTextArea();
-        txtId = new javax.swing.JTextField();
+        txtSerie = new JComboBox();
+        jScrollPane2 = new JScrollPane();
+        txtObservacao = new JTextArea();
+        txtId = new JTextField();
         lblfundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -405,21 +405,21 @@ public class TelaCadastroEmprestimo extends javax.swing.JFrame {
         //tente chamar a tela principal
         try
         {
-            
 
-            this.dispose();        
-            
+
+            this.dispose();
+
             TelaPrincipal telaprincip = new TelaPrincipal();
             telaprincip.setVisible(true);
-            
+
         }
         //se não conseguir pegue a excesão e mostre a mensagem na tela junto com a excesão
         catch(Exception ex)
         {
-            
+
             JOptionPane.showMessageDialog(null, "Error ao chamar a tela principal!" + ex);
-            
-        } 
+
+        }
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
@@ -438,8 +438,8 @@ public class TelaCadastroEmprestimo extends javax.swing.JFrame {
         //controller chama metodo update emprestimo
 
         //chama o metodo iniciar;
-        iniciar();        
-        
+        iniciar();
+
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
@@ -453,45 +453,45 @@ public class TelaCadastroEmprestimo extends javax.swing.JFrame {
     }//GEN-LAST:event_jTabelaCadEmprestimoMouseClicked
 
     private void JButtonNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonNomeActionPerformed
-        //Chama tela cadastro nome 
+        //Chama tela cadastro nome
         this.dispose();
-        
+
         TelaCadastroPessoa telacadnome = new TelaCadastroPessoa();
-        telacadnome.setVisible(true);  
+        telacadnome.setVisible(true);
     }//GEN-LAST:event_JButtonNomeActionPerformed
 
     private void txtEquipamentoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_txtEquipamentoItemStateChanged
-  
+
     }//GEN-LAST:event_txtEquipamentoItemStateChanged
 
     private void txtTipoEquipItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_txtTipoEquipItemStateChanged
         String tipoequipamentonome = txtTipoEquip.getSelectedItem().toString();
-        
+
         if(!txtTipoEquip.getSelectedItem().equals(tipoequipamentonome))
         {
-            
+
             //chama este metodo do controller
-            controller.atualizaEquipamentoModelo(tipoequipamentonome);  
-            
+            controller.atualizaEquipamentoModelo(tipoequipamentonome);
+
             String equip = txtEquipamento.getSelectedItem().toString();
-            
+
             if(txtEquipamento.getSelectedItem().equals(equip))
             {
-                
+
                 //chama este metodo do controller
                 controller.atualizaComboTombo(equip);
                 controller.atualizaComboSerie(equip);
-                
-            } 
- 
-        }  
-    
+
+            }
+
+        }
+
     }//GEN-LAST:event_txtTipoEquipItemStateChanged
 
     private void txtEquipamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEquipamentoActionPerformed
- 
-        
-            
+
+
+
     }//GEN-LAST:event_txtEquipamentoActionPerformed
 
     /**
@@ -501,7 +501,7 @@ public class TelaCadastroEmprestimo extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -706,36 +706,36 @@ public class TelaCadastroEmprestimo extends javax.swing.JFrame {
     public static void setTxtUnidade(JComboBox<String> txtUnidade) {
         TelaCadastroEmprestimo.txtUnidade = txtUnidade;
     }
-    
-    
+
+
     //metodo para iniciar elementos ao iniciar o frame
     public void iniciar()
     {
-        
+
         //impedir o usuario de mover as colunas para reoodena-las
         jTabelaCadEmprestimo.getTableHeader().setReorderingAllowed(false);
-        
+
             //inicia combobox atualiza unidade
             controller.atualizaUnidade();
-            
+
             //inicia combobox atualizarTipoEquip
             controller.atualizarTipoEquip();
-            
+
             //inicia combobox atualizaEquipamento
             controller.atualizaEquipamento();
-            
+
             //inicia combobox atualizaDestino
             controller.atualizardestino();
-            
+
             //inicia combobox nome
             controller.atualizaNome();
-            
+
             //incia combobox tombo
             controller.atualizaTombo();
-            
+
             //inicia combobo serie
             controller.atualizaSerie();
-        
+
             //as linhas abaixo define o tamanho das colunas da tabela
             //tabela pegue o modelo de coluna, pegue a coluna zero e sete a largura
             jTabelaCadEmprestimo.getColumnModel().getColumn(0).setPreferredWidth(30);
@@ -748,23 +748,23 @@ public class TelaCadastroEmprestimo extends javax.swing.JFrame {
             jTabelaCadEmprestimo.getColumnModel().getColumn(7).setPreferredWidth(110);
             jTabelaCadEmprestimo.getColumnModel().getColumn(8).setPreferredWidth(105);
             jTabelaCadEmprestimo.getColumnModel().getColumn(9).setPreferredWidth(125);
-            jTabelaCadEmprestimo.getColumnModel().getColumn(10).setPreferredWidth(160);    
-            jTabelaCadEmprestimo.getColumnModel().getColumn(11).setPreferredWidth(90);      
+            jTabelaCadEmprestimo.getColumnModel().getColumn(10).setPreferredWidth(160);
+            jTabelaCadEmprestimo.getColumnModel().getColumn(11).setPreferredWidth(90);
             jTabelaCadEmprestimo.getColumnModel().getColumn(12).setPreferredWidth(90);
-        
-    }        
-    
+
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JButton JButtonNome;
-    public static javax.swing.JButton btnEditar;
-    public static javax.swing.JButton btnEmprestar;
-    public static javax.swing.JButton btnExcluir;
-    public static javax.swing.JButton btnNovo;
-    public static javax.swing.JButton btnPesquisar;
-    public static javax.swing.JButton btnVoltar;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    public static javax.swing.JTable jTabelaCadEmprestimo;
+    public static JButton JButtonNome;
+    public static JButton btnEditar;
+    public static JButton btnEmprestar;
+    public static JButton btnExcluir;
+    public static JButton btnNovo;
+    public static JButton btnPesquisar;
+    public static JButton btnVoltar;
+    private JScrollPane jScrollPane1;
+    private JScrollPane jScrollPane2;
+    public static JTable jTabelaCadEmprestimo;
     private javax.swing.JLabel lblDataDevolucao;
     private javax.swing.JLabel lblDataSaida;
     private javax.swing.JLabel lblDestino;
@@ -782,16 +782,16 @@ public class TelaCadastroEmprestimo extends javax.swing.JFrame {
     private javax.swing.JLabel lblfundo;
     public static com.toedter.calendar.JDateChooser txtDataDevolucao;
     public static com.toedter.calendar.JDateChooser txtDataSaida;
-    public static javax.swing.JComboBox<String> txtDestino;
-    public static javax.swing.JComboBox<String> txtEquipamento;
-    public static javax.swing.JTextField txtId;
-    public static javax.swing.JComboBox<String> txtNome;
-    public static javax.swing.JTextArea txtObservacao;
-    public static javax.swing.JComboBox txtSerie;
-    public static javax.swing.JComboBox<String> txtStatus;
-    public static javax.swing.JComboBox<String> txtTipo;
-    public static javax.swing.JComboBox<String> txtTipoEquip;
-    public static javax.swing.JComboBox txtTombo;
-    public static javax.swing.JComboBox<String> txtUnidade;
+    public static JComboBox<String> txtDestino;
+    public static JComboBox<String> txtEquipamento;
+    public static JTextField txtId;
+    public static JComboBox<String> txtNome;
+    public static JTextArea txtObservacao;
+    public static JComboBox txtSerie;
+    public static JComboBox<String> txtStatus;
+    public static JComboBox<String> txtTipo;
+    public static JComboBox<String> txtTipoEquip;
+    public static JComboBox txtTombo;
+    public static JComboBox<String> txtUnidade;
     // End of variables declaration//GEN-END:variables
 }
