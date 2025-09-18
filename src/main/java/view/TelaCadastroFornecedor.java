@@ -5,7 +5,6 @@
 package view;
 
 import controller.CadastroFornecedorController;
-import controller.helper.CadastroFornecedorHelper;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -20,8 +19,7 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
     //criando campo controller
     private final CadastroFornecedorController controller;
 
-    //criando campo helper
-    private final CadastroFornecedorHelper helper;
+
 
     public TelaCadastroFornecedor() {
         initComponents();
@@ -30,9 +28,6 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
 
         //controller esta passando view como parametro
         controller = new CadastroFornecedorController(this);
-
-        //helper esta passando view como parametro
-        helper = new CadastroFornecedorHelper(this);
 
         //inicia essa tela no centro
         this.setLocationRelativeTo(null);
@@ -198,7 +193,7 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
 
     private void jTabelaFornecedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabelaFornecedorMouseClicked
         // TODO add your handling code here:
-        helper.setModelo();
+        setModelo();
     }//GEN-LAST:event_jTabelaFornecedorMouseClicked
 
     private void btnVoltar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar1ActionPerformed
@@ -235,10 +230,28 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
 
         iniciar();
     }//GEN-LAST:event_btnSalvarActionPerformed
+    public void setModelo()
+    {
 
+        int setar = jTabelaFornecedor.getSelectedRow();
+
+        txtId.setText(jTabelaFornecedor.getModel().getValueAt(setar, 0).toString());
+        txtFornecedor.setText(jTabelaFornecedor.getModel().getValueAt(setar, 1).toString());
+
+    }public void desbloquearCampos()
+    {
+
+        getTxtFornecedor().setEnabled(true);
+
+        btnEditar.setEnabled(true);
+        btnExcluir.setEnabled(true);
+        btnSalvar.setEnabled(true);
+        btnPesquisar.setEnabled(true);
+
+    }
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         //ao clickar chama o helper em novo seta todos os campos como true
-        helper.desbloquearCampos();
+        desbloquearCampos();
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
