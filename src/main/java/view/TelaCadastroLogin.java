@@ -2,9 +2,14 @@ package view;
 
 import com.toedter.calendar.JDateChooser;
 import controller.CadastroLoginController;
-import controller.helper.CadastroLoginHelper;
+
+
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -18,8 +23,6 @@ public class TelaCadastroLogin extends javax.swing.JFrame {
     //criando campo controller
     private final CadastroLoginController controller;
 
-    //criando campo helper
-    private final CadastroLoginHelper helper;
 
     public TelaCadastroLogin() {
         initComponents();
@@ -31,7 +34,7 @@ public class TelaCadastroLogin extends javax.swing.JFrame {
         controller = new CadastroLoginController(this);
 
         //helper esta passando view como parametro
-        helper = new CadastroLoginHelper(this);
+
 
         //chama o metodo iniciar
         this.iniciar();
@@ -309,7 +312,7 @@ public class TelaCadastroLogin extends javax.swing.JFrame {
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
 
         //ao clickar chama o helper em novo seta todos os campos como true
-        helper.desbloquearCampos();
+        desbloquearCampos();
 
     }//GEN-LAST:event_btnNovoActionPerformed
 
@@ -357,9 +360,50 @@ public class TelaCadastroLogin extends javax.swing.JFrame {
      controller.selecioneLoginsporNome();
 
     }//GEN-LAST:event_txtPesquisarNomeKeyReleased
+    public void setModelo()
+    {
 
+        int setar = jTableLogins.getSelectedRow();
+
+        txtID.setText(jTableLogins.getModel().getValueAt(setar, 0).toString());
+        txtLogin.setText(jTableLogins.getModel().getValueAt(setar, 1).toString());
+        txtNome.setText(jTableLogins.getModel().getValueAt(setar, 2).toString());
+        txtSenha.setText(jTableLogins.getModel().getValueAt(setar, 3).toString());
+        txtEmail.setText(jTableLogins.getModel().getValueAt(setar, 4).toString());
+        txtTipo.setSelectedItem(jTableLogins.getModel().getValueAt(setar, 5).toString());
+        try
+        {
+            Date data = new SimpleDateFormat("yyyy-MM-dd", Locale.UK).parse((String)jTableLogins.getModel().getValueAt(setar, 6).toString());
+
+            txtData.setDate(data);
+        }
+        catch (ParseException ex)
+        {
+
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
+
+        }
+
+
+    }   public void desbloquearCampos()
+    {
+
+        getTxtLogin().setEnabled(true);
+        getTxtNome().setEnabled(true);
+        getTxtSenha().setEnabled(true);
+        getTxtEmail().setEnabled(true);
+        getTxtTipo().setEnabled(true);
+        getTxtData().setEnabled(true);
+        getTxtPesquisarNome().setEnabled(true);
+
+        btnEditar.setEnabled(true);
+        btnSalvar.setEnabled(true);
+        btnExcluir.setEnabled(true);
+        btnPesquisar.setEnabled(true);
+
+    }
     private void jTableLoginsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableLoginsMouseClicked
-        helper.setModelo();
+        setModelo();
     }//GEN-LAST:event_jTableLoginsMouseClicked
 
     /**
