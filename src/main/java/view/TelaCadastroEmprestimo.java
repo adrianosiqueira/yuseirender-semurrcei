@@ -2,7 +2,12 @@ package view;
 
 import com.toedter.calendar.JDateChooser;
 import controller.CadastroEmprestimoController;
-import controller.helper.CadastroEmprestimoHelper;
+import model.Emprestimo;
+import model.Equipamento;
+import model.Nome;
+import model.TipoEquipamento;
+import model.Unidade;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -10,24 +15,208 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class TelaCadastroEmprestimo extends javax.swing.JFrame {
 
+
+
+    public Emprestimo obterModeloSemID()
+    {
+
+
+        Unidade unidade = (Unidade) getTxtUnidade().getSelectedItem();//Unidade unidade recebe passado para unidade a view gettextunidade e pegue o texto
+        TipoEquipamento tipoequip = (TipoEquipamento) getTxtTipoEquip().getSelectedItem();//TipoEquipamento tipoequipamento recebe passado para unidade a view getTxtTipoEquip e pegue o texto
+        Equipamento equipamento = (Equipamento) getTxtEquipamento().getSelectedItem();//Equipamento equipamento recebe passando para equipamento a view getTxtEquipamento e pegue o texto
+        Unidade destino = (Unidade) getTxtDestino().getSelectedItem();//Unidade unidade recebe passado para unidade a view getTxtDestino e pegue o texto
+        Nome nome = (Nome) getTxtNome().getSelectedItem();//Nome nome recebe passado para nome a view getTxtNome e pegue o texto
+        Date dataSaida = (Date) getTxtDataSaida().getDate();//Date dataSaida recebe passado para Date a view getTxtDataSaida e pegue o texto
+        Date dataDevolucao = (Date) getTxtDataDevolucao().getDate();//Date dataDevolucao recebe passado para Date a view getTxtDataDevolucao e pegue o texto
+        String status = getTxtStatus().getSelectedItem().toString();//String status recebe view pegue o getselecteditem para string
+        String tipo = getTxtTipo().getSelectedItem().toString();//String tipo recebe view pegue o getselecteditem para string
+        String observacao = getTxtObservacao().getText();//String observacao recebe view pegue o getTextObservacao e pegue o texto
+        String tombo = getTxtTombo().getSelectedItem().toString();//String tombo recebe view pegue o getTextTombo e pegue o texto
+        String serie = getTxtSerie().getSelectedItem().toString();//String serie recebe view pegue o getTextSerie e pegue o texto
+
+        if(getTxtObservacao().getText() == null)
+        {
+
+            observacao = "NULL";
+
+        }
+        else
+        {
+
+            observacao = getTxtObservacao().getText();//String observacao recebe view pegue o getTextObservacao e pegue o texto
+
+        }
+
+        //construir objeto do tipo emprestimo
+        Emprestimo emprestimo = new Emprestimo(unidade,tipoequip,equipamento,destino,nome,dataSaida,dataDevolucao,status,tipo,observacao,tombo,serie);
+
+        return emprestimo;
+
+    }
+
+
+
+    public Emprestimo obterModelo()
+    {
+        Integer id = Integer.parseInt(getTxtId().getText());
+        Unidade unidade = (Unidade) getTxtUnidade().getSelectedItem();//Unidade unidade recebe passado para unidade a view gettextunidade e pegue o texto
+        TipoEquipamento tipoequip = (TipoEquipamento) getTxtTipoEquip().getSelectedItem();//TipoEquipamento tipoequipamento recebe passado para unidade a view getTxtTipoEquip e pegue o texto
+        Equipamento equipamento = (Equipamento) getTxtEquipamento().getSelectedItem();//Equipamento equipamento recebe passando para equipamento a view getTxtEquipamento e pegue o texto
+        Unidade destino = (Unidade) getTxtDestino().getSelectedItem();//Unidade unidade recebe passado para unidade a view getTxtDestino e pegue o texto
+        Nome nome = (Nome) getTxtNome().getSelectedItem();//Nome nome recebe passado para nome a view getTxtNome e pegue o texto
+        Date dataSaida = (Date) getTxtDataSaida().getDate();//Date dataSaida recebe passado para Date a view getTxtDataSaida e pegue o texto
+        Date dataDevolucao = (Date) getTxtDataDevolucao().getDate();//Date dataDevolucao recebe passado para Date a view getTxtDataDevolucao e pegue o texto
+        String status = getTxtStatus().getSelectedItem().toString();//String status recebe view pegue o getselecteditem para string
+        String tipo = getTxtTipo().getSelectedItem().toString();//String tipo recebe view pegue o getselecteditem para string
+        String observacao = getTxtObservacao().getText();//String observacao recebe view pegue o getTextObservacao e pegue o texto
+        String tombo = getTxtTombo().getSelectedItem().toString();//String tombo recebe view pegue o getTextTombo e pegue o texto
+        String serie = getTxtSerie().getSelectedItem().toString();//String serie recebe view pegue o getTextSerie e pegue o texto
+
+        if(getTxtObservacao().getText() == null)
+        {
+
+            observacao = "NULL";
+
+        }
+        else
+        {
+
+            observacao = getTxtObservacao().getText();//String observacao recebe view pegue o getTextObservacao e pegue o texto
+
+        }
+
+        //construir objeto do tipo emprestimo
+        Emprestimo emprestimo = new Emprestimo(id,unidade,tipoequip,equipamento,destino,nome,dataSaida,dataDevolucao,status,tipo,observacao,tombo,serie);
+
+        return emprestimo;
+
+    }
+
+    //metodo para setar modelo
+    public void setModelo()
+    {
+
+        int setar = jTabelaCadEmprestimo.getSelectedRow();
+
+        txtId.setText(jTabelaCadEmprestimo.getModel().getValueAt(setar, 0).toString());
+        txtUnidade.setSelectedItem(jTabelaCadEmprestimo.getModel().getValueAt(setar, 1).toString());
+        txtTipoEquip.setSelectedItem(jTabelaCadEmprestimo.getModel().getValueAt(setar, 2).toString());
+        txtEquipamento.setSelectedItem(jTabelaCadEmprestimo.getModel().getValueAt(setar, 3).toString());
+        txtDestino.setSelectedItem(jTabelaCadEmprestimo.getModel().getValueAt(setar, 4).toString());
+        txtNome.setSelectedItem(jTabelaCadEmprestimo.getModel().getValueAt(setar, 5).toString());
+
+        try
+        {
+            Date data = new SimpleDateFormat("dd-MM-yyyy").parse((String)jTabelaCadEmprestimo.getModel().getValueAt(setar, 6));
+
+            txtDataSaida.setDate(data);
+        } catch (ParseException ex)
+        {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
+        }
+
+        try
+        {
+            Date data = new SimpleDateFormat("dd-MM-yyyy").parse((String)jTabelaCadEmprestimo.getModel().getValueAt(setar, 7));
+
+            txtDataDevolucao.setDate(data);
+        } catch (ParseException ex)
+        {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
+        }
+
+        txtStatus.setSelectedItem(jTabelaCadEmprestimo.getModel().getValueAt(setar, 8).toString());
+
+        txtTipo.setSelectedItem(jTabelaCadEmprestimo.getModel().getValueAt(setar, 9).toString());
+
+        if(jTabelaCadEmprestimo.getModel().getValueAt(setar, 10).toString() != null)
+        {
+
+            txtObservacao.setText(jTabelaCadEmprestimo.getModel().getValueAt(setar, 10).toString());
+
+        }
+        else
+        {
+
+            txtObservacao.setText("NULO");
+
+        }
+
+        txtTombo.setSelectedItem(jTabelaCadEmprestimo.getModel().getValueAt(setar, 11).toString());
+        txtSerie.setSelectedItem(jTabelaCadEmprestimo.getModel().getValueAt(setar, 12).toString());
+
+    }
+
+    //metodo para limpar os campos
+    public void limparTela()
+    {
+
+        getTxtObservacao().setText("");
+        getjTabelaCadEmprestimo().clearSelection();
+
+    }
+
+    //metodo para bloquear os campos
+    public void bloquearCampos()
+    {
+        getTxtUnidade().setEnabled(false);
+        getTxtTipoEquip().setEnabled(false);
+        getTxtEquipamento().setEnabled(false);
+        getTxtDestino().setEnabled(false);
+        getTxtNome().setEnabled(false);
+        getTxtDataSaida().setEnabled(false);
+        getTxtDataDevolucao().setEnabled(false);
+        getTxtStatus().setEnabled(false);
+        getTxtObservacao().setEnabled(false);
+        getTxtTombo().setEnabled(false);
+        getTxtSerie().setEnabled(false);
+
+        btnEditar.setEnabled(false);
+        btnEmprestar.setEnabled(false);
+        btnExcluir.setEnabled(true);
+        btnPesquisar.setEnabled(false);
+    }
+
+    //metodo para desbloquear campos
+    public void desbloquearCampos()
+    {
+
+        getTxtUnidade().setEnabled(true);
+        getTxtTipoEquip().setEnabled(true);
+        getTxtEquipamento().setEnabled(true);
+        getTxtDestino().setEnabled(true);
+        getTxtNome().setEnabled(true);
+        getTxtDataSaida().setEnabled(true);
+        getTxtDataDevolucao().setEnabled(true);
+        getTxtStatus().setEnabled(true);
+        getTxtObservacao().setEnabled(true);
+        getTxtTombo().setEnabled(true);
+        getTxtSerie().setEnabled(true);
+
+        btnEditar.setEnabled(true);
+        btnEmprestar.setEnabled(true);
+        btnExcluir.setEnabled(true);
+        btnPesquisar.setEnabled(true);
+
+    }
     //criando campo controller
     private final CadastroEmprestimoController controller;
 
-    //criando campo helper
-    private final CadastroEmprestimoHelper helper;
 
     public TelaCadastroEmprestimo() {
         initComponents();
 
         //controller esta passando view como parametro
         controller = new CadastroEmprestimoController(this);
-
-        //helper esta passando view como parametro
-        helper = new CadastroEmprestimoHelper(this);
 
         //inicia essa tela no centro
         this.setLocationRelativeTo(null);
@@ -444,12 +633,12 @@ public class TelaCadastroEmprestimo extends javax.swing.JFrame {
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         //ao clickar chama o helper em novo seta todos os campos como true
-        helper.desbloquearCampos();
+        desbloquearCampos();
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void jTabelaCadEmprestimoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabelaCadEmprestimoMouseClicked
         //Chama o helper metodo obter modelo;
-        helper.obterModelo();
+        obterModelo();
     }//GEN-LAST:event_jTabelaCadEmprestimoMouseClicked
 
     private void JButtonNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonNomeActionPerformed
