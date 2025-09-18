@@ -1,8 +1,6 @@
 package view;
 
-import Relatorios.RelatorioGeral;
 import controller.CadastroLoginController;
-import controller.helper.TelaPrincipalHelper;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -11,8 +9,6 @@ import javax.swing.JMenuItem;
 
 public class TelaPrincipal extends javax.swing.JFrame {
 
-    //criando campo helper
-    private final TelaPrincipalHelper helper;
 
     //criando campo controller
     private final CadastroLoginController controller;
@@ -22,9 +18,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         //inicie frame no meio
         this.setLocationRelativeTo(null);
-
-        //helper esta passando view como parametro
-        helper = new TelaPrincipalHelper(this);
 
         //controller esta passando view como parametro
         controller = new CadastroLoginController(this);
