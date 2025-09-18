@@ -1,7 +1,6 @@
 package view;
 
 import controller.CadastroNomeController;
-import controller.helper.CadastroNomeHelper;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
@@ -10,12 +9,29 @@ import javax.swing.JTextField;
 
 
 public class TelaCadastroPessoa extends javax.swing.JFrame {
+    public void setModelo()
+    {
 
+        int setar = jTabelaCadNome.getSelectedRow();
+
+        txtId.setText(jTabelaCadNome.getModel().getValueAt(setar, 0).toString());
+        txtNomepessoa.setText(jTabelaCadNome.getModel().getValueAt(setar, 1).toString());
+
+    }public void desbloquearCampos()
+    {
+
+        getTxtNomepessoa().setEnabled(true);
+
+        btnEditar.setEnabled(true);
+        btnExcluir.setEnabled(true);
+        btnSalvar.setEnabled(true);
+        btnPesquisar.setEnabled(true);
+
+    }
     //criando campo controller
     private final CadastroNomeController controller;
 
-    //criando campo helper
-    private final CadastroNomeHelper helper;
+
 
     public TelaCadastroPessoa() {
         initComponents();
@@ -25,8 +41,7 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
         //controller esta passando view como parametro
         controller = new CadastroNomeController(this);
 
-        //helper esta passando view como parametro
-        helper = new CadastroNomeHelper(this);
+
 
         //inicia essa tela no centro
         this.setLocationRelativeTo(null);
@@ -199,12 +214,12 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
 
     private void jTabelaCadNomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabelaCadNomeMouseClicked
         // TODO add your handling code here:
-        helper.setModelo();
+        setModelo();
     }//GEN-LAST:event_jTabelaCadNomeMouseClicked
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         //ao clickar chama o helper em novo seta todos os campos como true
-        helper.desbloquearCampos();
+        desbloquearCampos();
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
