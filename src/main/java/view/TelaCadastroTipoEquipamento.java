@@ -1,7 +1,7 @@
 package view;
 
 import controller.CadastroTipoEquipamentoController;
-import controller.helper.CadastroTipoEquipamentoHelper;
+
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -9,11 +9,30 @@ import javax.swing.JTextField;
 
 public class TelaCadastroTipoEquipamento extends javax.swing.JFrame {
 
+    public void setModelo()
+    {
+
+        int setar = jTabelaTipoEquipamento.getSelectedRow();
+
+        txtId.setText(jTabelaTipoEquipamento.getModel().getValueAt(setar, 0).toString());
+        txtTipoEquipamento.setText(jTabelaTipoEquipamento.getModel().getValueAt(setar, 1).toString());
+
+    }public void desbloquearCampos()
+    {
+
+        getTxtTipoEquipamento().setEnabled(true);
+
+        btnEditar.setEnabled(true);
+        btnExcluir.setEnabled(true);
+        btnSalvar.setEnabled(true);
+        btnPesquisar.setEnabled(true);
+
+    }
+
     //criando campo controller
     private final CadastroTipoEquipamentoController controller;
 
-    //criando campo helper
-    private final CadastroTipoEquipamentoHelper helper;
+
 
     public TelaCadastroTipoEquipamento() {
         initComponents();
@@ -23,8 +42,7 @@ public class TelaCadastroTipoEquipamento extends javax.swing.JFrame {
         //controller esta passando view como parametro
         controller = new CadastroTipoEquipamentoController(this);
 
-        //helper esta passando view como parametro
-        helper = new CadastroTipoEquipamentoHelper(this);
+
 
         //inicia essa tela no centro
         this.setLocationRelativeTo(null);
@@ -183,7 +201,7 @@ public class TelaCadastroTipoEquipamento extends javax.swing.JFrame {
 
     private void jTabelaTipoEquipamentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabelaTipoEquipamentoMouseClicked
         // TODO add your handling code here:
-        helper.setModelo();
+        setModelo();
     }//GEN-LAST:event_jTabelaTipoEquipamentoMouseClicked
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
@@ -234,7 +252,7 @@ public class TelaCadastroTipoEquipamento extends javax.swing.JFrame {
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         //ao clickar chama o helper em novo seta todos os campos como true
-        helper.desbloquearCampos();
+        desbloquearCampos();
     }//GEN-LAST:event_btnNovoActionPerformed
 
     /**
