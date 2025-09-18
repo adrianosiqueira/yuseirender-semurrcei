@@ -10,7 +10,6 @@ import Relatorios.RelatorioTipoEquip;
 import Relatorios.RelatorioTipoEquipFornecedorEquip;
 import Relatorios.RelatorioUnidade;
 import controller.CadastroEquipamentoController;
-import controller.helper.CadastroEquipamentoHelper;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -23,8 +22,6 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
     //criando campo controller
     private final CadastroEquipamentoController controller;
 
-    //criando campo helper
-    private final CadastroEquipamentoHelper helper;
 
     public TelaCadastroEquipamento() {
         initComponents();
@@ -33,9 +30,6 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
 
         //controller esta passando view como parametro
         controller = new CadastroEquipamentoController(this);
-
-        //helper esta passando view como parametro
-        helper = new CadastroEquipamentoHelper(this);
 
         //inicia essa tela no centro
         this.setLocationRelativeTo(null);
@@ -525,9 +519,29 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
 
         //ao clickar chama o helper em novo seta todos os campos como true
-        helper.desbloquearCampos();
+        desbloquearCampos();
     }//GEN-LAST:event_btnNovoActionPerformed
+    public void desbloquearCampos()
+    {
 
+        getTxtUnidade().setEnabled(true);
+        getTxtTipoEquip().setEnabled(true);
+        getTxtTombo().setEnabled(true);
+        getTxtSerie().setEnabled(true);
+        getTxtFornecedor().setEnabled(true);
+        getTxtFabricante().setEnabled(true);
+        getTxtModelo().setEnabled(true);
+        getTxtStatus().setEnabled(true);
+        getTxtEquipamento().setEnabled(true);
+        getTxtObservacao().setEnabled(true);
+
+
+        btnEditar.setEnabled(true);
+        btnExcluir.setEnabled(true);
+        btnSalvar.setEnabled(true);
+        btnPesquisar.setEnabled(true);
+
+    }
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
 
         //controller chama metodo salvar Equipamento
@@ -560,9 +574,39 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVoltar1ActionPerformed
 
     private void jTabelaCadEquipMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabelaCadEquipMouseClicked
-        helper.setModelo();
+        setModelo();
     }//GEN-LAST:event_jTabelaCadEquipMouseClicked
+    public void setModelo()
+    {
 
+        int setar = jTabelaCadEquip.getSelectedRow();
+
+        txtId.setText(jTabelaCadEquip.getModel().getValueAt(setar, 0).toString());
+        txtUnidade.setSelectedItem(jTabelaCadEquip.getModel().getValueAt(setar, 1).toString());
+        txtTipoEquip.setSelectedItem(jTabelaCadEquip.getModel().getValueAt(setar, 2).toString());
+        txtTombo.setText(jTabelaCadEquip.getModel().getValueAt(setar, 3).toString());
+        txtSerie.setText(jTabelaCadEquip.getModel().getValueAt(setar, 4).toString());
+        txtFornecedor.setSelectedItem(jTabelaCadEquip.getModel().getValueAt(setar, 5).toString());
+        txtFabricante.setSelectedItem(jTabelaCadEquip.getModel().getValueAt(setar, 6).toString());
+        txtModelo.setText(jTabelaCadEquip.getModel().getValueAt(setar, 7).toString());
+        txtStatus.setSelectedItem(jTabelaCadEquip.getModel().getValueAt(setar, 8).toString());
+        txtEquipamento.setSelectedItem(jTabelaCadEquip.getModel().getValueAt(setar, 9).toString());
+        txtObservacao.setText(jTabelaCadEquip.getModel().getValueAt(setar, 10).toString());
+
+        if(jTabelaCadEquip.getModel().getValueAt(setar, 10).toString() != null)
+        {
+
+            txtObservacao.setText(jTabelaCadEquip.getModel().getValueAt(setar, 10).toString());
+
+        }
+        else
+        {
+
+            txtObservacao.setText("NULO");
+
+        }
+
+    }
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
 
         //controller chama metodo deletar equipamento
