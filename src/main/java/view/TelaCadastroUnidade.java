@@ -1,7 +1,7 @@
 package view;
 
 import controller.CadastroUnidadeController;
-import controller.helper.CadastroUnidadeHelper;
+
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -13,8 +13,25 @@ public class TelaCadastroUnidade extends javax.swing.JFrame {
     //criando campo controller
     private final CadastroUnidadeController controller;
 
-    //criando campo helper
-    private final CadastroUnidadeHelper helper;
+    public void setModelo()
+    {
+
+        int setar = jTabelaCadUnidade.getSelectedRow();
+
+        txtId.setText(jTabelaCadUnidade.getModel().getValueAt(setar, 0).toString());
+        txtUnidade.setText(jTabelaCadUnidade.getModel().getValueAt(setar, 1).toString());
+
+    }    public void desbloquearCampos()
+    {
+
+        getTxtUnidade().setEnabled(true);
+
+        btnEditar.setEnabled(true);
+        btnExcluir.setEnabled(true);
+        btnSalvar.setEnabled(true);
+        btnPesquisar.setEnabled(true);
+
+    }
 
     public TelaCadastroUnidade() {
         initComponents();
@@ -24,8 +41,7 @@ public class TelaCadastroUnidade extends javax.swing.JFrame {
         //controller esta passando view como parametro
         controller = new CadastroUnidadeController(this);
 
-        //helper esta passando view como parametro
-        helper = new CadastroUnidadeHelper(this);
+
 
         //inicia essa tela no centro
         this.setLocationRelativeTo(null);
@@ -195,7 +211,7 @@ public class TelaCadastroUnidade extends javax.swing.JFrame {
 
     private void jTabelaCadUnidadeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabelaCadUnidadeMouseClicked
         // TODO add your handling code here:
-        helper.setModelo();
+        setModelo();
     }//GEN-LAST:event_jTabelaCadUnidadeMouseClicked
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
@@ -248,7 +264,7 @@ public class TelaCadastroUnidade extends javax.swing.JFrame {
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         //ao clickar chama o helper em novo seta todos os campos como true
-        helper.desbloquearCampos();
+        desbloquearCampos();
     }//GEN-LAST:event_btnNovoActionPerformed
 
     /**
