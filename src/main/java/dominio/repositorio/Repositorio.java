@@ -3,7 +3,7 @@ package dominio.repositorio;
 import java.util.List;
 import java.util.Optional;
 
-public interface DAO<T> {
+public interface Repositorio<T> {
 
     void salvar(T t);
 
