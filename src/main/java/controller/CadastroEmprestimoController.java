@@ -1,6 +1,5 @@
 package controller;
 
-import lombok.RequiredArgsConstructor;
 import model.DAO.EmprestimoDAO;
 import model.DAO.EquipamentoDAO;
 import model.DAO.NomeDAO;
@@ -11,7 +10,6 @@ import model.Equipamento;
 import model.Nome;
 import model.TipoEquipamento;
 import model.Unidade;
-import view.TelaCadastroEmprestimo;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -19,20 +17,13 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
-@SuppressWarnings("ClassCanBeRecord")
-@RequiredArgsConstructor
 public class CadastroEmprestimoController {
-
-    private final TelaCadastroEmprestimo view;
 
     /**
      * Não sei o que isso deveria fazer, porque isso não é usado.
      */
-    public void atualizarTabelaEmprestimo() {
-        DefaultTableModel modelo = (DefaultTableModel) view
-            .getTblEmprestimo()
-            .getModel();
-
+    public void atualizarTabelaEmprestimo(JTable table) {
+        DefaultTableModel modelo = (DefaultTableModel) table.getModel();
         modelo.setRowCount(0);
 
         try (Connection conexao = new Conexao().Conectar()) {
@@ -63,15 +54,12 @@ public class CadastroEmprestimoController {
         }
     }
 
-    public void atualizarComboBoxUnidade() {
+    public void atualizarComboBoxUnidade(JComboBox<String> comboBox) {
         try (Connection conexao = new Conexao().Conectar()) {
             UnidadeDAO dao = new UnidadeDAO(conexao);
             List<Unidade> unidades = dao.selecioneAllUnidade();
 
-            DefaultComboBoxModel<String> modelo = (DefaultComboBoxModel<String>) view
-                .getCbxUnidade()
-                .getModel();
-
+            DefaultComboBoxModel<String> modelo = (DefaultComboBoxModel<String>) comboBox.getModel();
             modelo.removeAllElements();
 
             for (Unidade unidade : unidades) {
@@ -83,15 +71,12 @@ public class CadastroEmprestimoController {
         }
     }
 
-    public void atualizarComboBoxTipoEquipamento() {
+    public void atualizarComboBoxTipoEquipamento(JComboBox<String> comboBox) {
         try (Connection conexao = new Conexao().Conectar()) {
             TipoEquipamentoDAO dao = new TipoEquipamentoDAO(conexao);
             List<TipoEquipamento> tipoEquipamentos = dao.selecioneAllTipoEquipamento();
 
-            DefaultComboBoxModel<String> modelo = (DefaultComboBoxModel<String>) view
-                .getCbxTipoEquip()
-                .getModel();
-
+            DefaultComboBoxModel<String> modelo = (DefaultComboBoxModel<String>) comboBox.getModel();
             modelo.removeAllElements();
 
             for (TipoEquipamento tipoEquipamento : tipoEquipamentos) {
@@ -103,15 +88,12 @@ public class CadastroEmprestimoController {
         }
     }
 
-    public void atualizarComboBoxEquipamento() {
+    public void atualizarComboBoxEquipamento(JComboBox<String> comboBox) {
         try (Connection conexao = new Conexao().Conectar()) {
             EquipamentoDAO dao = new EquipamentoDAO(conexao);
             List<Equipamento> equipamentos = dao.selecioneAllEquipamento();
 
-            DefaultComboBoxModel<String> modelo = (DefaultComboBoxModel<String>) view
-                .getCbxEquipamento()
-                .getModel();
-
+            DefaultComboBoxModel<String> modelo = (DefaultComboBoxModel<String>) comboBox.getModel();
             modelo.removeAllElements();
 
             for (Equipamento equipamento : equipamentos) {
@@ -123,15 +105,12 @@ public class CadastroEmprestimoController {
         }
     }
 
-    public void atualizarComboBoxDestino() {
+    public void atualizarComboBoxDestino(JComboBox<String> comboBox) {
         try (Connection conexao = new Conexao().Conectar()) {
             UnidadeDAO dao = new UnidadeDAO(conexao);
             List<Unidade> unidades = dao.selecioneAllUnidade();
 
-            DefaultComboBoxModel<String> modelo = (DefaultComboBoxModel<String>) view
-                .getCbxDestino()
-                .getModel();
-
+            DefaultComboBoxModel<String> modelo = (DefaultComboBoxModel<String>) comboBox.getModel();
             modelo.removeAllElements();
 
             for (Unidade unidade : unidades) {
@@ -143,15 +122,12 @@ public class CadastroEmprestimoController {
         }
     }
 
-    public void atualizarComboBoxNome() {
+    public void atualizarComboBoxNome(JComboBox<String> comboBox) {
         try (Connection conexao = new Conexao().Conectar()) {
             NomeDAO dao = new NomeDAO(conexao);
             List<Nome> nomes = dao.selecioneAllNome();
 
-            DefaultComboBoxModel<String> modelo = (DefaultComboBoxModel<String>) view
-                .getCbxNome()
-                .getModel();
-
+            DefaultComboBoxModel<String> modelo = (DefaultComboBoxModel<String>) comboBox.getModel();
             modelo.removeAllElements();
 
             for (Nome nome : nomes) {
@@ -163,15 +139,12 @@ public class CadastroEmprestimoController {
         }
     }
 
-    public void atualizarComboBoxTombo() {
+    public void atualizarComboBoxTombo(JComboBox<String> comboBox) {
         try (Connection conexao = new Conexao().Conectar()) {
             EquipamentoDAO dao = new EquipamentoDAO(conexao);
             List<Equipamento> equipamentos = dao.selecioneAllEquipamento();
 
-            DefaultComboBoxModel<String> modelo = (DefaultComboBoxModel<String>) view
-                .getCbxTombo()
-                .getModel();
-
+            DefaultComboBoxModel<String> modelo = (DefaultComboBoxModel<String>) comboBox.getModel();
             modelo.removeAllElements();
 
             for (Equipamento equipamento : equipamentos) {
@@ -183,15 +156,12 @@ public class CadastroEmprestimoController {
         }
     }
 
-    public void atualizarComboBoxEquipamento(String tipoEquipamento) {
+    public void atualizarComboBoxEquipamento(JComboBox<String> comboBox, String tipoEquipamento) {
         try (Connection conexao = new Conexao().Conectar()) {
             EquipamentoDAO dao = new EquipamentoDAO(conexao);
             List<Equipamento> equipamentos = dao.selecionarAllModeloPorTipoEquip(tipoEquipamento);
 
-            DefaultComboBoxModel<String> modelo = (DefaultComboBoxModel<String>) view
-                .getCbxEquipamento()
-                .getModel();
-
+            DefaultComboBoxModel<String> modelo = (DefaultComboBoxModel<String>) comboBox.getModel();
             modelo.removeAllElements();
 
             for (Equipamento equipamento : equipamentos) {
@@ -206,15 +176,12 @@ public class CadastroEmprestimoController {
     /**
      * Não sei para que serve esse método.
      */
-    public void atualizarComboBoxTombo(String equip) {
+    public void atualizarComboBoxTombo(JComboBox<String> comboBox, String equip) {
         try (Connection conexao = new Conexao().Conectar()) {
             EquipamentoDAO dao = new EquipamentoDAO(conexao);
             List<Equipamento> equipamentos = dao.selecioneAllEquipamentoTomboStringEquip(equip);
 
-            DefaultComboBoxModel<String> modelo = (DefaultComboBoxModel<String>) view
-                .getCbxTombo()
-                .getModel();
-
+            DefaultComboBoxModel<String> modelo = (DefaultComboBoxModel<String>) comboBox.getModel();
             modelo.removeAllElements();
 
             for (Equipamento equipamento : equipamentos) {
@@ -226,15 +193,12 @@ public class CadastroEmprestimoController {
         }
     }
 
-    public void atualizarComboBoxSerie(String equip) {
+    public void atualizarComboBoxSerie(JComboBox<String> comboBox, String equip) {
         try (Connection conexao = new Conexao().Conectar()) {
             EquipamentoDAO dao = new EquipamentoDAO(conexao);
             List<Equipamento> equipamentos = dao.selecioneAllEquipamentoSerieStringEquip(equip);
 
-            DefaultComboBoxModel<String> modelo = (DefaultComboBoxModel<String>) view
-                .getCbxSerie()
-                .getModel();
-
+            DefaultComboBoxModel<String> modelo = (DefaultComboBoxModel<String>) comboBox.getModel();
             modelo.removeAllElements();
 
             for (Equipamento equipamento : equipamentos) {
@@ -246,15 +210,12 @@ public class CadastroEmprestimoController {
         }
     }
 
-    public void atualizarComboBoxSerie() {
+    public void atualizarComboBoxSerie(JComboBox<String> comboBox) {
         try (Connection conexao = new Conexao().Conectar()) {
             EquipamentoDAO dao = new EquipamentoDAO(conexao);
             List<Equipamento> equipamentos = dao.selecioneAllEquipamentoSerie();
 
-            DefaultComboBoxModel<String> modelo = (DefaultComboBoxModel<String>) view
-                .getCbxSerie()
-                .getModel();
-
+            DefaultComboBoxModel<String> modelo = (DefaultComboBoxModel<String>) comboBox.getModel();
             modelo.removeAllElements();
 
             for (Equipamento equipamento : equipamentos) {

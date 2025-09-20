@@ -2,7 +2,7 @@ package view;
 
 import com.toedter.calendar.JDateChooser;
 import controller.CadastroEmprestimoController;
-import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 import model.Emprestimo;
 import model.Equipamento;
 import model.Nome;
@@ -13,18 +13,17 @@ import org.netbeans.lib.awtextra.AbsoluteLayout;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Optional;
 
-@Getter
+@SuppressWarnings("FieldCanBeLocal")
+@Slf4j
 public class TelaCadastroEmprestimo extends JFrame {
 
     private JTable tblEmprestimo;
@@ -70,12 +69,12 @@ public class TelaCadastroEmprestimo extends JFrame {
     private JLabel lblTitulo;
     private JLabel lblTombo;
     private JLabel lblUnidade;
-    private JLabel lblfundo;
+    private JLabel lblFundo;
 
     private CadastroEmprestimoController controller;
 
     public TelaCadastroEmprestimo() {
-        this.controller = new CadastroEmprestimoController(this);
+        this.controller = new CadastroEmprestimoController();
 
         initComponents();
         executarConfiguracaoInicial();
@@ -84,9 +83,10 @@ public class TelaCadastroEmprestimo extends JFrame {
 
     @SuppressWarnings("DataFlowIssue")
     public Emprestimo obterModeloSemID() {
-        String observacao = txtObservacao.getText().isBlank()
-            ? "NULL"
-            : txtObservacao.getText();
+        String observacao = Optional
+            .of(txtObservacao.getText())
+            .filter(s -> !s.isBlank())
+            .orElse("NULO");
 
         return new Emprestimo(
             (Unidade) cbxUnidade.getSelectedItem(),
@@ -123,56 +123,61 @@ public class TelaCadastroEmprestimo extends JFrame {
         cbxEquipamento.setSelectedItem(tblEmprestimo.getModel().getValueAt(setar, 3).toString());
         cbxDestino.setSelectedItem(tblEmprestimo.getModel().getValueAt(setar, 4).toString());
         cbxNome.setSelectedItem(tblEmprestimo.getModel().getValueAt(setar, 5).toString());
-
-        try {
-            Date data = new SimpleDateFormat("dd-MM-yyyy").parse((String) tblEmprestimo.getModel().getValueAt(setar, 6));
-
-            txtDataSaida.setDate(data);
-        } catch (ParseException ex) {
-            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
-        }
-
-        try {
-            Date data = new SimpleDateFormat("dd-MM-yyyy").parse((String) tblEmprestimo.getModel().getValueAt(setar, 7));
-
-            txtDataDevolucao.setDate(data);
-        } catch (ParseException ex) {
-            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
-        }
-
         cbxStatus.setSelectedItem(tblEmprestimo.getModel().getValueAt(setar, 8).toString());
-
         cbxTipo.setSelectedItem(tblEmprestimo.getModel().getValueAt(setar, 9).toString());
-
-        if (tblEmprestimo.getModel().getValueAt(setar, 10).toString() != null) {
-
-            txtObservacao.setText(tblEmprestimo.getModel().getValueAt(setar, 10).toString());
-        } else {
-
-            txtObservacao.setText("NULO");
-        }
-
         cbxTombo.setSelectedItem(tblEmprestimo.getModel().getValueAt(setar, 11).toString());
         cbxSerie.setSelectedItem(tblEmprestimo.getModel().getValueAt(setar, 12).toString());
+
+
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+
+            String dataSaida = (String) tblEmprestimo
+                .getModel()
+                .getValueAt(setar, 6);
+
+            String dataDevolucao = (String) tblEmprestimo
+                .getModel()
+                .getValueAt(setar, 7);
+
+
+            txtDataSaida.setDate(dateFormat.parse(dataSaida));
+            txtDataDevolucao.setDate(dateFormat.parse(dataDevolucao));
+        } catch (Exception e) {
+            log.error(e.getLocalizedMessage(), e);
+        }
+
+
+        String observacao = tblEmprestimo
+            .getModel()
+            .getValueAt(setar, 10)
+            .toString();
+
+        if (observacao.isBlank()) {
+            observacao = "NULO";
+        }
+
+        txtObservacao.setText(observacao);
     }
 
     public void limparTela() {
-        getTxtObservacao().setText("");
-        getTblEmprestimo().clearSelection();
+        txtObservacao.setText("");
+        tblEmprestimo.clearSelection();
     }
 
     public void bloquearCampos() {
-        getCbxUnidade().setEnabled(false);
-        getCbxTipoEquip().setEnabled(false);
-        getCbxEquipamento().setEnabled(false);
-        getCbxDestino().setEnabled(false);
-        getCbxNome().setEnabled(false);
-        getTxtDataSaida().setEnabled(false);
-        getTxtDataDevolucao().setEnabled(false);
-        getCbxStatus().setEnabled(false);
-        getTxtObservacao().setEnabled(false);
-        getCbxTombo().setEnabled(false);
-        getCbxSerie().setEnabled(false);
+        cbxUnidade.setEnabled(false);
+        cbxTipoEquip.setEnabled(false);
+        cbxEquipamento.setEnabled(false);
+        cbxDestino.setEnabled(false);
+        cbxNome.setEnabled(false);
+        cbxStatus.setEnabled(false);
+        cbxTombo.setEnabled(false);
+        cbxSerie.setEnabled(false);
+
+        txtDataSaida.setEnabled(false);
+        txtDataDevolucao.setEnabled(false);
+        txtObservacao.setEnabled(false);
 
         btnEditar.setEnabled(false);
         btnEmprestar.setEnabled(false);
@@ -181,18 +186,18 @@ public class TelaCadastroEmprestimo extends JFrame {
     }
 
     public void desbloquearCampos() {
+        cbxUnidade.setEnabled(true);
+        cbxTipoEquip.setEnabled(true);
+        cbxEquipamento.setEnabled(true);
+        cbxDestino.setEnabled(true);
+        cbxNome.setEnabled(true);
+        cbxStatus.setEnabled(true);
+        cbxTombo.setEnabled(true);
+        cbxSerie.setEnabled(true);
 
-        getCbxUnidade().setEnabled(true);
-        getCbxTipoEquip().setEnabled(true);
-        getCbxEquipamento().setEnabled(true);
-        getCbxDestino().setEnabled(true);
-        getCbxNome().setEnabled(true);
-        getTxtDataSaida().setEnabled(true);
-        getTxtDataDevolucao().setEnabled(true);
-        getCbxStatus().setEnabled(true);
-        getTxtObservacao().setEnabled(true);
-        getCbxTombo().setEnabled(true);
-        getCbxSerie().setEnabled(true);
+        txtDataSaida.setEnabled(true);
+        txtDataDevolucao.setEnabled(true);
+        txtObservacao.setEnabled(true);
 
         btnEditar.setEnabled(true);
         btnEmprestar.setEnabled(true);
@@ -238,7 +243,7 @@ public class TelaCadastroEmprestimo extends JFrame {
         pnl2 = new JScrollPane();
         txtObservacao = new JTextArea();
         txtId = new JTextField();
-        lblfundo = new JLabel();
+        lblFundo = new JLabel();
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -465,8 +470,8 @@ public class TelaCadastroEmprestimo extends JFrame {
         getContentPane().add(txtId, new AbsoluteConstraints(50, 20, 100, -1));
 
         // noinspection DataFlowIssue
-        lblfundo.setIcon(new ImageIcon(getClass().getResource("/view/imagens/PARTE INTERNA2.png")));
-        getContentPane().add(lblfundo, new AbsoluteConstraints(0, 0, 1250, 650));
+        lblFundo.setIcon(new ImageIcon(getClass().getResource("/view/imagens/PARTE INTERNA2.png")));
+        getContentPane().add(lblFundo, new AbsoluteConstraints(0, 0, 1250, 650));
 
         pack();
     }
@@ -479,10 +484,11 @@ public class TelaCadastroEmprestimo extends JFrame {
         try {
             this.dispose();
 
-            TelaPrincipal telaprincip = new TelaPrincipal();
-            telaprincip.setVisible(true);
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Error ao chamar a tela principal!" + ex);
+            TelaPrincipal tela = new TelaPrincipal();
+            tela.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error ao chamar a tela principal!" + e);
+            throw new RuntimeException(e);
         }
     }
 
@@ -505,22 +511,30 @@ public class TelaCadastroEmprestimo extends JFrame {
     private void JButtonNomeActionPerformed(ActionEvent evt) {
         this.dispose();
 
-        TelaCadastroPessoa telacadnome = new TelaCadastroPessoa();
-        telacadnome.setVisible(true);
+        TelaCadastroPessoa tela = new TelaCadastroPessoa();
+        tela.setVisible(true);
     }
 
     @SuppressWarnings("DataFlowIssue")
     private void txtTipoEquipItemStateChanged(ItemEvent evt) {
-        String tipoequipamentonome = cbxTipoEquip.getSelectedItem().toString();
+        String tipoEquipamentoNome = cbxTipoEquip
+            .getSelectedItem()
+            .toString();
 
-        if (!cbxTipoEquip.getSelectedItem().equals(tipoequipamentonome)) {
-            controller.atualizarComboBoxEquipamento(tipoequipamentonome);
-            String equip = cbxEquipamento.getSelectedItem().toString();
+        if (cbxTipoEquip.getSelectedItem().equals(tipoEquipamentoNome)) {
+            return;
+        }
 
-            if (cbxEquipamento.getSelectedItem().equals(equip)) {
-                controller.atualizarComboBoxTombo(equip);
-                controller.atualizarComboBoxSerie(equip);
-            }
+
+        controller.atualizarComboBoxEquipamento(cbxEquipamento, tipoEquipamentoNome);
+
+        String equipamento = cbxEquipamento
+            .getSelectedItem()
+            .toString();
+
+        if (cbxEquipamento.getSelectedItem().equals(equipamento)) {
+            controller.atualizarComboBoxTombo(cbxTombo, equipamento);
+            controller.atualizarComboBoxSerie(cbxSerie, equipamento);
         }
     }
 
@@ -529,26 +543,27 @@ public class TelaCadastroEmprestimo extends JFrame {
             .getTableHeader()
             .setReorderingAllowed(false);
 
-        controller.atualizarComboBoxUnidade();
-        controller.atualizarComboBoxTipoEquipamento();
-        controller.atualizarComboBoxEquipamento();
-        controller.atualizarComboBoxDestino();
-        controller.atualizarComboBoxNome();
-        controller.atualizarComboBoxTombo();
-        controller.atualizarComboBoxSerie();
+        controller.atualizarComboBoxUnidade(cbxUnidade);
+        controller.atualizarComboBoxTipoEquipamento(cbxTipoEquip);
+        controller.atualizarComboBoxEquipamento(cbxEquipamento);
+        controller.atualizarComboBoxDestino(cbxDestino);
+        controller.atualizarComboBoxNome(cbxNome);
+        controller.atualizarComboBoxTombo(cbxTombo);
+        controller.atualizarComboBoxSerie(cbxSerie);
 
-        tblEmprestimo.getColumnModel().getColumn(0).setPreferredWidth(30);
-        tblEmprestimo.getColumnModel().getColumn(1).setPreferredWidth(88);
-        tblEmprestimo.getColumnModel().getColumn(2).setPreferredWidth(102);
-        tblEmprestimo.getColumnModel().getColumn(3).setPreferredWidth(102);
-        tblEmprestimo.getColumnModel().getColumn(4).setPreferredWidth(87);
-        tblEmprestimo.getColumnModel().getColumn(5).setPreferredWidth(160);
-        tblEmprestimo.getColumnModel().getColumn(6).setPreferredWidth(110);
-        tblEmprestimo.getColumnModel().getColumn(7).setPreferredWidth(110);
-        tblEmprestimo.getColumnModel().getColumn(8).setPreferredWidth(105);
-        tblEmprestimo.getColumnModel().getColumn(9).setPreferredWidth(125);
-        tblEmprestimo.getColumnModel().getColumn(10).setPreferredWidth(160);
-        tblEmprestimo.getColumnModel().getColumn(11).setPreferredWidth(90);
-        tblEmprestimo.getColumnModel().getColumn(12).setPreferredWidth(90);
+        TableColumnModel modeloColuna = tblEmprestimo.getColumnModel();
+        modeloColuna.getColumn(0).setPreferredWidth(30);
+        modeloColuna.getColumn(1).setPreferredWidth(88);
+        modeloColuna.getColumn(2).setPreferredWidth(102);
+        modeloColuna.getColumn(3).setPreferredWidth(102);
+        modeloColuna.getColumn(4).setPreferredWidth(87);
+        modeloColuna.getColumn(5).setPreferredWidth(160);
+        modeloColuna.getColumn(6).setPreferredWidth(110);
+        modeloColuna.getColumn(7).setPreferredWidth(110);
+        modeloColuna.getColumn(8).setPreferredWidth(105);
+        modeloColuna.getColumn(9).setPreferredWidth(125);
+        modeloColuna.getColumn(10).setPreferredWidth(160);
+        modeloColuna.getColumn(11).setPreferredWidth(90);
+        modeloColuna.getColumn(12).setPreferredWidth(90);
     }
 }
